@@ -9,8 +9,10 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
+import Box from '@mui/material/Box';
 
 import './components.css';
 
@@ -33,27 +35,40 @@ export default function AppBarComponent()
 
 	const handleMenuItemClick = (action: string) =>
 	{
-		switch(action) {
-		case 'Accueil':
-			router.push('/');
-			break;
-		case 'Projets':
-			router.push('/projets');
-			break;
-		case 'À propos':
-			router.push('/a-propos');
-			break;
-		case 'Contact':
-			router.push('/contact');
-			break;
+		switch(action)
+		{
+			case 'Accueil':
+				router.push('/');
+				break;
+			case 'Projets':
+				router.push('/projets');
+				break;
+			case 'À propos':
+				router.push('/a-propos');
+				break;
+			case 'Contact':
+				router.push('/contact');
+				break;
+			case 'Admin':
+				router.push('/admin');
+				break;
 		}
 		handleMenuClose();
+	};
+
+	const handleLinkClick = (link: string) =>
+	{
+		router.push(link);
 	};
 
 	return (
 		<AppBar className="my-app-bar" position="static">
 			<Toolbar>
-				<Typography variant="h6" className="my-typography">Portfolio</Typography>
+				<Box sx={{ flexGrow: 1 }}>
+					<Link href="/">
+						<Typography variant="h6" className="my-typography" color="black">Portfolio</Typography>
+					</Link>
+				</Box>
 				<IconButton 
 					edge="start" 
 					color="inherit" 
@@ -71,10 +86,11 @@ export default function AppBarComponent()
 					open={open}
 					onClose={handleMenuClose}
 				>
-					<MenuItem onClick={() => handleMenuItemClick('Accueil')}>Accueil</MenuItem>
-					<MenuItem onClick={() => handleMenuItemClick('Projets')}>Projets</MenuItem>
-					<MenuItem onClick={() => handleMenuItemClick('À propos')}>À propos</MenuItem>
-					<MenuItem onClick={() => handleMenuItemClick('Contact')}>Contact</MenuItem>
+					<MenuItem onClick={() => handleLinkClick('/')}>Accueil</MenuItem>
+					<MenuItem onClick={() => handleLinkClick('/projets')}>Projets</MenuItem>
+					<MenuItem onClick={() => handleLinkClick('/a-propos')}>À propos</MenuItem>
+					<MenuItem onClick={() => handleLinkClick('/contact')}>Contact</MenuItem>
+					<MenuItem onClick={() => handleLinkClick('/admin')}>Admin</MenuItem>
 				</Menu>
 				<IconButton edge="end" color="inherit" aria-label="menu" onClick={() => setDarkMode(!darkMode)}> 
 					{darkMode ? <LightModeIcon /> : <DarkModeIcon />}
