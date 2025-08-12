@@ -1,5 +1,6 @@
 .my-app-bar {
     background-color: #303030 !important;
+    z-index: 1100 !important; /* S'assurer que l'AppBar reste au-dessus de tout */
 }
 
 .my-typography {
@@ -33,4 +34,16 @@
 body.dark-mode {
   background-color: #121212;
   color: #ffffff;
+}
+
+/* Compensation pour l'AppBar fixe */
+body {
+  padding-top: 64px; /* Hauteur standard de l'AppBar Material-UI */
+}
+
+/* Ajustement pour les écrans plus petits */
+@media (max-width: 600px) {
+  body {
+    padding-top: 56px; /* Hauteur réduite sur mobile */
+  }
 }

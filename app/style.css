@@ -481,7 +481,7 @@ a:active {
 #welcome-section::before {
 	content: '';
 	position: fixed;
-	background: url(bgDragon01.svg?sanitize=true);
+	background: url(../imgs/bgDragon01.svg?sanitize=true);
 	background-position-x: 100%;
 	background-attachment: fixed;
 	width: 100%;
@@ -550,7 +550,7 @@ a:active {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	background: url(imgs/backWarior02.svg?sanitize=true) bottom left no-repeat;
+	background: url(../imgs/backWarior02.svg?sanitize=true) bottom left no-repeat;
 	background-size: 25%;
 	width: 50%;
 	height: 70%;
@@ -769,7 +769,7 @@ a:active {
 	-webkit-clip-path: polygon(0 0, 20% 5%, 100% 0, 100% 100%, 80% 95%, 0 100%);
 					clip-path: polygon(0 0, 20% 5%, 100% 0, 100% 100%, 80% 95%, 0 100%);
 	z-index: 5;
-	background: #07000b url(imgs/bgDragon01.jpg) center no-repeat;
+	background: #07000b url(../imgs/bgDragon01.jpg) center no-repeat;
 	background-attachment: fixed;
 }
 
