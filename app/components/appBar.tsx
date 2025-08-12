@@ -9,7 +9,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
 
 import './components.css';
@@ -20,6 +20,15 @@ export default function AppBarComponent()
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 	const router = useRouter();
+
+	// Appliquer le thème sombre au body
+	useEffect(() => {
+		if (darkMode) {
+			document.body.classList.add('dark-mode');
+		} else {
+			document.body.classList.remove('dark-mode');
+		}
+	}, [darkMode]);
 
 	const handleMenuClick = (event: React.MouseEvent<HTMLElement>) =>
 	{
@@ -50,8 +59,12 @@ export default function AppBarComponent()
 		handleMenuClose();
 	};
 
+	const handleDarkModeToggle = () => {
+		setDarkMode(!darkMode);
+	};
+
 	return (
-		<AppBar className="my-app-bar" position="static">
+		<AppBar className={`my-app-bar ${darkMode ? 'dark-mode' : ''}`} position="static">
 			<Toolbar>
 				<Typography variant="h6" className="my-typography">Portfolio</Typography>
 				<IconButton 
@@ -76,7 +89,15 @@ export default function AppBarComponent()
 					<MenuItem onClick={() => handleMenuItemClick('À propos')}>À propos</MenuItem>
 					<MenuItem onClick={() => handleMenuItemClick('Contact')}>Contact</MenuItem>
 				</Menu>
-				<IconButton edge="end" color="inherit" aria-label="menu" onClick={() => setDarkMode(!darkMode)}> 
+				<IconButton 
+					edge="end" 
+					color="inherit" 
+					aria-label="dark mode toggle" 
+					onClick={handleDarkModeToggle}
+					style={{
+						color: darkMode ? '#ffffff' : '#ffffff'  // Blanc dans les deux modes
+					}}
+				> 
 					{darkMode ? <LightModeIcon /> : <DarkModeIcon />}
 				</IconButton>
 			</Toolbar>
