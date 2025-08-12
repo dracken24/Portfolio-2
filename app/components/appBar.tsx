@@ -9,8 +9,10 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
+import Box from '@mui/material/Box';
+import Link from "next/link";
 
 import './components.css';
 
@@ -21,6 +23,15 @@ export default function AppBarComponent()
 	const open = Boolean(anchorEl);
 	const router = useRouter();
 
+	// Appliquer le thème sombre au body
+	useEffect(() => {
+		if (darkMode) {
+			document.body.classList.add('dark-mode');
+		} else {
+			document.body.classList.remove('dark-mode');
+		}
+	}, [darkMode]);
+
 	const handleMenuClick = (event: React.MouseEvent<HTMLElement>) =>
 	{
 		setAnchorEl(event.currentTarget);
@@ -30,30 +41,47 @@ export default function AppBarComponent()
 	{
 		setAnchorEl(null);
 	};
+	
+		const handleDarkModeToggle = () => {
+		setDarkMode(!darkMode);
+	};
+	
+		const handleLinkClick = (link: string) =>
+	{
+		router.push(link);
+	};
 
 	const handleMenuItemClick = (action: string) =>
 	{
-		switch(action) {
-		case 'Accueil':
-			router.push('/');
-			break;
-		case 'Projets':
-			router.push('/projets');
-			break;
-		case 'À propos':
-			router.push('/a-propos');
-			break;
-		case 'Contact':
-			router.push('/contact');
-			break;
+		switch(action)
+		{
+			case 'Accueil':
+				router.push('/');
+				break;
+			case 'Projets':
+				router.push('/projets');
+				break;
+			case 'À propos':
+				router.push('/a-propos');
+				break;
+			case 'Contact':
+				router.push('/contact');
+				break;
+			case 'Admin':
+				router.push('/admin');
+				break;
 		}
 		handleMenuClose();
 	};
 
 	return (
-		<AppBar className="my-app-bar" position="static">
+		<AppBar className={`my-app-bar ${darkMode ? 'dark-mode' : ''}`} position="static">
 			<Toolbar>
-				<Typography variant="h6" className="my-typography">Portfolio</Typography>
+				<Box sx={{ flexGrow: 1 }}>
+					<Link href="/">
+						<Typography variant="h6" className="my-typography" color="black">Portfolio</Typography>
+					</Link>
+				</Box>
 				<IconButton 
 					edge="start" 
 					color="inherit" 
@@ -71,12 +99,21 @@ export default function AppBarComponent()
 					open={open}
 					onClose={handleMenuClose}
 				>
-					<MenuItem onClick={() => handleMenuItemClick('Accueil')}>Accueil</MenuItem>
-					<MenuItem onClick={() => handleMenuItemClick('Projets')}>Projets</MenuItem>
-					<MenuItem onClick={() => handleMenuItemClick('À propos')}>À propos</MenuItem>
-					<MenuItem onClick={() => handleMenuItemClick('Contact')}>Contact</MenuItem>
+					<MenuItem onClick={() => handleLinkClick('/')}>Accueil</MenuItem>
+					<MenuItem onClick={() => handleLinkClick('/projets')}>Projets</MenuItem>
+					<MenuItem onClick={() => handleLinkClick('/a-propos')}>À propos</MenuItem>
+					<MenuItem onClick={() => handleLinkClick('/contact')}>Contact</MenuItem>
+					<MenuItem onClick={() => handleLinkClick('/admin')}>Admin</MenuItem>
 				</Menu>
-				<IconButton edge="end" color="inherit" aria-label="menu" onClick={() => setDarkMode(!darkMode)}> 
+				<IconButton 
+					edge="end" 
+					color="inherit" 
+					aria-label="dark mode toggle" 
+					onClick={handleDarkModeToggle}
+					style={{
+						color: darkMode ? '#ffffff' : '#ffffff'  // Blanc dans les deux modes
+					}}
+				> 
 					{darkMode ? <LightModeIcon /> : <DarkModeIcon />}
 				</IconButton>
 			</Toolbar>
