@@ -5,3 +5,32 @@
 .my-typography {
     flex-grow: 1;
 }
+
+/* Styles pour le mode sombre */
+.dark-mode {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}
+
+.dark-mode .my-app-bar {
+  background-color: #1e1e1e !important;
+}
+
+.dark-mode .my-typography {
+  color: #ffffff !important;
+}
+
+/* Styles spécifiques pour les icônes en mode sombre */
+.dark-mode .MuiIconButton-root {
+  color: #ffffff !important;
+}
+
+.dark-mode .MuiSvgIcon-root {
+  color: #ffffff !important;
+}
+
+/* Styles pour le body en mode sombre */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}

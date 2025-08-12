@@ -3,7 +3,7 @@
 @contentType = application/json
 
 ### 1. GET - Obtenir tous les produits (liste vide au début)
-GET {{baseUrl}}/api/products
+GET {{baseUrl}}/api/projects
 
 ### 2. POST - Ajouter le premier produit
 POST {{baseUrl}}/api/products
