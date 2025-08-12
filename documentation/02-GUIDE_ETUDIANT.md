@@ -3,6 +3,7 @@
 ## Objectif de ce laboratoire
 
 Vous allez apprendre à créer **4 services web REST** qui permettent de :
+
 1. **Ajouter** un produit dans une base de données
 2. **Lister** tous les produits  
 3. **Modifier** un produit par son ID
@@ -29,17 +30,20 @@ Vous allez apprendre à créer **4 services web REST** qui permettent de :
 ## Étape 1 : Récupérer le projet
 
 ### Option A : Cloner le repository (recommandé)
+
 ```bash
 git clone [URL_DU_REPO]
 cd laboratoire2
 ```
 
 ### Option B : Télécharger le ZIP
+
 1. Téléchargez le ZIP du repository
 2. Décompressez dans un dossier de votre choix
 3. Ouvrez le terminal dans ce dossier
 
 ### Installer les dépendances
+
 ```bash
 npm install
 ```
@@ -55,6 +59,7 @@ npm install
 3. Cliquez sur "Create a project"
 4. Donnez un nom à votre projet (ex: "laboratoire2")
 5. **IMPORTANT :** Copiez l'URL de connexion qui ressemble à :
+
    ```
    postgresql://alex:AbC123dEf@ep-cool-darkness-123456.us-east-2.aws.neon.tech/dbname?sslmode=require
    ```
@@ -70,6 +75,7 @@ DATABASE_URL="votre_url_neon_ici"
 ```
 
 **Exemple :**
+
 ```bash
 DATABASE_URL="postgresql://alex:AbC123dEf@ep-cool-darkness-123456.us-east-2.aws.neon.tech/dbname?sslmode=require"
 ```
@@ -81,7 +87,8 @@ npx prisma generate
 npx prisma db push
 ```
 
-**Résultat attendu :** 
+**Résultat attendu :**
+
 ```
 ✓ Generated Prisma Client
 ✓ Schema successfully applied
@@ -93,9 +100,10 @@ npx prisma db push
 npm run dev
 ```
 
-**Résultat attendu :** 
+**Résultat attendu :**
+
 - Terminal affiche : `Ready - started server on 0.0.0.0:3000`
-- Ouvrez http://localhost:3000
+- Ouvrez <http://localhost:3000>
 - Vous voyez la page d'accueil du laboratoire
 
 ## Étape 4 : Tester vos services web
@@ -109,11 +117,13 @@ npm run dev
 ### 4.2 Test 1 : GET - Lister les produits
 
 **Configuration :**
+
 - **Méthode :** GET
-- **URL :** `http://localhost:3000/api/products`
+- **URL :** `http://localhost:3000/api/projects`
 - Cliquez sur "Send"
 
 **Résultat attendu :**
+
 ```json
 {
   "success": true,
@@ -125,6 +135,7 @@ npm run dev
 ### 4.3 Test 2 : POST - Ajouter un produit
 
 **Configuration :**
+
 - **Méthode :** POST
 - **URL :** `http://localhost:3000/api/products`
 - **Headers :** Ajoutez `Content-Type: application/json`
@@ -140,6 +151,7 @@ npm run dev
 - Cliquez sur "Send"
 
 **Résultat attendu :**
+
 ```json
 {
   "success": true,
@@ -161,6 +173,7 @@ Refaites le Test 1 (GET). Vous devriez maintenant voir votre produit.
 ### 4.5 Test 4 : PUT - Modifier un produit
 
 **Configuration :**
+
 - **Méthode :** PUT
 - **URL :** `http://localhost:3000/api/products/1` (remplacez 1 par l'ID de votre produit)
 - **Headers :** Ajoutez `Content-Type: application/json`
@@ -176,6 +189,7 @@ Refaites le Test 1 (GET). Vous devriez maintenant voir votre produit.
 - Cliquez sur "Send"
 
 **Résultat attendu :**
+
 ```json
 {
   "success": true,
@@ -193,11 +207,13 @@ Refaites le Test 1 (GET). Vous devriez maintenant voir votre produit.
 ### 4.6 Test 5 : DELETE - Supprimer un produit
 
 **Configuration :**
+
 - **Méthode :** DELETE
 - **URL :** `http://localhost:3000/api/products/1` (remplacez 1 par l'ID de votre produit)
 - Cliquez sur "Send"
 
 **Résultat attendu :**
+
 ```json
 {
   "success": true,
@@ -233,6 +249,7 @@ prisma/
 Ce fichier contient 2 fonctions :
 
 **GET function :**
+
 ```typescript
 export async function GET() {
   // Récupère tous les produits depuis la base
@@ -242,6 +259,7 @@ export async function GET() {
 ```
 
 **POST function :**
+
 ```typescript
 export async function POST(request: NextRequest) {
   // Récupère les données du body
@@ -255,6 +273,7 @@ export async function POST(request: NextRequest) {
 ### 5.3 Analyser app/api/products/[id]/route.ts
 
 **PUT function :**
+
 ```typescript
 export async function PUT(request, { params }) {
   // Récupère l'ID depuis l'URL
@@ -267,6 +286,7 @@ export async function PUT(request, { params }) {
 ```
 
 **DELETE function :**
+
 ```typescript
 export async function DELETE(request, { params }) {
   // Récupère l'ID depuis l'URL
@@ -323,6 +343,7 @@ Assurez-vous que tous ces tests passent :
 ### 7.2 Capture d'écran
 
 Prenez une capture montrant :
+
 1. Postman avec vos 4 requests configurées
 2. Un résultat de GET avec plusieurs produits
 3. Un résultat de POST réussi
@@ -367,22 +388,27 @@ Ajoutez une section à la fin du README :
 ## Aide en cas de problème
 
 ### Erreur de connexion à la base
+
 1. Vérifiez votre URL dans `.env.local`
 2. Testez la connexion sur Neon.tech
 3. Régénérez l'URL si nécessaire
 
 ### Erreur "Prisma Client not found"
+
 ```bash
 npx prisma generate
 ```
 
 ### Port 3000 déjà utilisé
+
 ```bash
 npm run dev -- -p 3001
 ```
+
 Puis utilisez `http://localhost:3001` dans vos tests.
 
 ### Services ne répondent pas
+
 1. Vérifiez que le serveur est démarré (`npm run dev`)
 2. Vérifiez l'URL dans Postman
 3. Vérifiez la console pour les erreurs

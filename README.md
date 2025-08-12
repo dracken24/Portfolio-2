@@ -28,7 +28,7 @@ Consultez le dossier `documentation/` pour tous les guides (par ordre d'utilisat
 
 ## Services disponibles
 
-- `GET /api/products` - Lister tous les produits
+- `GET /api/projects` - Lister tous les produits
 - `POST /api/products` - Ajouter un nouveau produit
 - `PUT /api/products/[id]` - Modifier un produit par ID
 - `DELETE /api/products/[id]` - Supprimer un produit par ID
