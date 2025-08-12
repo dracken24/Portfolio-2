@@ -1,0 +1,85 @@
+"use client";
+
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import MenuIcon from '@mui/icons-material/Menu';
+import AppBar from "@mui/material/AppBar";
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import { useState } from "react";
+import { useRouter } from 'next/navigation';
+
+import './components.css';
+
+export default function AppBarComponent()
+{
+	const [darkMode, setDarkMode] = useState(false);
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+	const open = Boolean(anchorEl);
+	const router = useRouter();
+
+	const handleMenuClick = (event: React.MouseEvent<HTMLElement>) =>
+	{
+		setAnchorEl(event.currentTarget);
+	};
+
+	const handleMenuClose = () =>
+	{
+		setAnchorEl(null);
+	};
+
+	const handleMenuItemClick = (action: string) =>
+	{
+		switch(action) {
+		case 'Accueil':
+			router.push('/');
+			break;
+		case 'Projets':
+			router.push('/projets');
+			break;
+		case 'À propos':
+			router.push('/a-propos');
+			break;
+		case 'Contact':
+			router.push('/contact');
+			break;
+		}
+		handleMenuClose();
+	};
+
+	return (
+		<AppBar className="my-app-bar" position="static">
+			<Toolbar>
+				<Typography variant="h6" className="my-typography">Portfolio</Typography>
+				<IconButton 
+					edge="start" 
+					color="inherit" 
+					aria-label="menu"
+					onClick={handleMenuClick}
+					aria-controls={open ? 'basic-menu' : undefined}
+					aria-haspopup="true"
+					aria-expanded={open ? 'true' : undefined}
+				>
+					<MenuIcon />
+				</IconButton>
+				<Menu
+					id="basic-menu"
+					anchorEl={anchorEl}
+					open={open}
+					onClose={handleMenuClose}
+				>
+					<MenuItem onClick={() => handleMenuItemClick('Accueil')}>Accueil</MenuItem>
+					<MenuItem onClick={() => handleMenuItemClick('Projets')}>Projets</MenuItem>
+					<MenuItem onClick={() => handleMenuItemClick('À propos')}>À propos</MenuItem>
+					<MenuItem onClick={() => handleMenuItemClick('Contact')}>Contact</MenuItem>
+				</Menu>
+				<IconButton edge="end" color="inherit" aria-label="menu" onClick={() => setDarkMode(!darkMode)}> 
+					{darkMode ? <LightModeIcon /> : <DarkModeIcon />}
+				</IconButton>
+			</Toolbar>
+		</AppBar>
+	)
+}

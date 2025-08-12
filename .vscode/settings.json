@@ -1,0 +1,135 @@
+{
+  "workbench.colorTheme": "Aura Dark",
+  "editor.minimap.enabled": true,
+  "terminal.integrated.shell.windows": "c:/Program Files/PowerShell/7/pwsh.exe",
+  "terminal.integrated.fontWeight": "1",
+  "editor.fontFamily": "'Fira Code', 'Consolas', 'Courier New', monospace",
+  "editor.fontSize": 15,
+  "editor.tabSize": 4,
+  "editor.fontWeight": "1",
+  "workbench.editor.showTabs": "multiple",
+  "workbench.colorCustomizations": {
+    "editorCursor.foreground": "#d748b8",
+    "editor.lineHighlightBackground": "#8a43945f",
+    "editor.lineHighlightBorder": "#00e1ff5f"
+  },
+  "workbench.statusBar.visible": true,
+  "editor.lineNumbers": "on",
+  "editor.cursorStyle": "line",
+  "window.zoomLevel": 0,
+  "todohighlight.isEnable": true,
+  "todohighlight.keywords": [
+    {
+      "text": "TODO:",
+      "color": "#ff1000",
+      "backgroundColor": "rgba(0,0,0,0)"
+    },
+    {
+      "text": "HACK:",
+      "color": "#ff6600",
+      "backgroundColor": "rgba(0,0,0,0)"
+    },
+    {
+      "text": "NOTE:",
+      "color": "#b348d7",
+      "backgroundColor": "rgba(0,0,0,0)"
+    },
+    {
+      "text": "WARNING:",
+      "color": "yellow",
+      "backgroundColor": "rgba(0,0,0,0)"
+    },
+    {
+      "text": "KEEP:",
+      "color": "#12b6a5",
+      "backgroundColor": "rgba(0,0,0,0)"
+    }
+  ],
+  "todohighlight.defaultStyle": {
+    "color": "red",
+    "backgroundColor": "#ffab00",
+    "overviewRulerColor": "rgba(0,0,0,0)",
+    "isWholeLine": false
+  },
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "omnisharp.enableEditorConfigSupport": false,
+  "editor.quickSuggestions": {
+    "other": false,
+    "comments": false,
+    "strings": false
+  },
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.tabCompletion": "on",
+  "editor.suggest.showWords": true,
+  "editor.suggest.showSnippets": true,
+  "editor.suggest.showClasses": true,
+  "editor.suggest.showFunctions": true,
+  "editor.suggest.showVariables": true,
+  "editor.suggest.showConstants": true,
+  "editor.suggest.showEnums": true,
+  "editor.suggest.showEnumMembers": true,
+  "editor.suggest.showKeywords": true,
+  "editor.suggest.showMethods": true,
+  "editor.suggest.showProperties": true,
+  "editor.suggest.showFields": true,
+  "editor.suggest.showConstructors": true,
+  "editor.suggest.showOperators": true,
+  "editor.suggest.showUnits": true,
+  "editor.suggest.showValues": true,
+  "editor.suggest.showColors": true,
+  "editor.suggest.showFiles": true,
+  "editor.suggest.showReferences": true,
+  "editor.suggest.showCustomcolors": true,
+  "editor.suggest.showTypeParameters": true,
+  "editor.formatOnType": false,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": false,
+  "editor.useTabStops": false,
+  "editor.wordWrap": "off",
+  "editor.scrollBeyondLastLine": false,
+  "editor.autoIndent": "advanced",
+  "editor.trimAutoWhitespace": false,
+  "editor.formatOnSaveMode": "file",
+  "editor.formatOnSaveTimeout": 750,
+  "editor.formatOnFocusMode": "off",
+  "editor.formatOnFocusChange": false,
+  "[csharp]": {
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false,
+    "editor.autoIndent": "advanced",
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4,
+    "editor.trimAutoWhitespace": false,
+    "editor.formatOnSaveMode": "file",
+    "editor.formatOnSaveTimeout": 750,
+    "editor.formatOnFocusMode": "off",
+    "editor.formatOnFocusChange": false,
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": true,
+      "strings": true
+    }
+  },
+  "problems.decorations.enabled": true,
+  "problems.showCurrentInStatus": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "dotnet.defaultSolution": "Untitled-Rogue-Like-Game.sln",
+  "omnisharp.enableRoslynAnalyzers": true,
+  "csharp.semanticHighlighting.enabled": true,
+  "csharp.inlayHints.enableInlayHintsForParameters": true,
+  "csharp.inlayHints.enableInlayHintsForLiteralParameters": true,
+  "csharp.inlayHints.enableInlayHintsForObjectCreationParameters": true,
+  "csharp.inlayHints.enableInlayHintsForOtherParameters": true,
+  "csharp.inlayHints.suppressInlayHintsForParametersThatDifferOnlyBySuffix": true,
+  "csharp.inlayHints.suppressInlayHintsForParametersThatMatchMethodIntent": true,
+  "csharp.inlayHints.suppressInlayHintsForParametersThatMatchArgumentName": true,
+  "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true
+}

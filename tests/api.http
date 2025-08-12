@@ -1,0 +1,132 @@
+### Variables
+@baseUrl = http://localhost:3000
+@contentType = application/json
+
+### 1. GET - Obtenir tous les produits (liste vide au début)
+GET {{baseUrl}}/api/products
+
+### 2. POST - Ajouter le premier produit
+POST {{baseUrl}}/api/products
+Content-Type: {{contentType}}
+
+{
+  "name": "MacBook Air M2",
+  "price": 1299.99
+}
+
+### 3. POST - Ajouter un deuxième produit
+POST {{baseUrl}}/api/products
+Content-Type: {{contentType}}
+
+{
+  "name": "iPad Pro 12.9",
+  "price": 899.99
+}
+
+### 4. POST - Ajouter un troisième produit
+POST {{baseUrl}}/api/products
+Content-Type: {{contentType}}
+
+{
+  "name": "AirPods Pro",
+  "price": 279.99
+}
+
+### 5. GET - Vérifier que tous les produits sont listés
+GET {{baseUrl}}/api/products
+
+### 6. GET - Obtenir un produit par ID (bonus)
+GET {{baseUrl}}/api/products/1
+
+### 7. PUT - Modifier le premier produit
+PUT {{baseUrl}}/api/products/1
+Content-Type: {{contentType}}
+
+{
+  "name": "MacBook Air M2 - Edition Spéciale",
+  "price": 1399.99
+}
+
+### 8. GET - Vérifier que le produit a été modifié
+GET {{baseUrl}}/api/products/1
+
+### 9. DELETE - Supprimer le produit avec ID 2
+DELETE {{baseUrl}}/api/products/2
+
+### 10. GET - Vérifier que le produit a été supprimé
+GET {{baseUrl}}/api/products
+
+### 11. DELETE - Supprimer le produit avec ID 1
+DELETE {{baseUrl}}/api/products/1
+
+### 12. DELETE - Supprimer le produit avec ID 3
+DELETE {{baseUrl}}/api/products/3
+
+### 13. GET - Vérifier que la liste est vide
+GET {{baseUrl}}/api/products
+
+###
+### TESTS D'ERREURS
+###
+
+### Erreur 1 - POST sans nom
+POST {{baseUrl}}/api/products
+Content-Type: {{contentType}}
+
+{
+  "price": 999.99
+}
+
+### Erreur 2 - POST avec prix négatif
+POST {{baseUrl}}/api/products
+Content-Type: {{contentType}}
+
+{
+  "name": "Produit test",
+  "price": -50
+}
+
+### Erreur 3 - POST avec nom vide
+POST {{baseUrl}}/api/products
+Content-Type: {{contentType}}
+
+{
+  "name": "",
+  "price": 199.99
+}
+
+### Erreur 4 - DELETE avec ID inexistant
+DELETE {{baseUrl}}/api/products/999
+
+### Erreur 5 - DELETE avec ID invalide
+DELETE {{baseUrl}}/api/products/abc
+
+### Erreur 6 - GET avec ID inexistant
+GET {{baseUrl}}/api/products/999
+
+### Erreur 7 - PUT avec ID inexistant
+PUT {{baseUrl}}/api/products/999
+Content-Type: {{contentType}}
+
+{
+  "name": "Produit inexistant",
+  "price": 199.99
+}
+
+### Erreur 8 - PUT avec nom vide
+PUT {{baseUrl}}/api/products/1
+Content-Type: {{contentType}}
+
+{
+  "name": "",
+  "price": 299.99
+}
+
+### Erreur 9 - PUT avec prix négatif
+PUT {{baseUrl}}/api/products/1
+Content-Type: {{contentType}}
+
+{
+  "name": "Produit test",
+  "price": -50
+}

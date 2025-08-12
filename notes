@@ -1,0 +1,16 @@
+npm install
+npm run dev  ==­> erreur
+Création de .env et ajout de DATABASE_URL dans .env
+Ajout de DATABASE_URL dans le .env
+npm install prisma @prisma/client
+npm install -D prisma
+npx prisma init ==> erreur et c'est normal étant donné que le dossier prisma existe
+Ajouter le schéma Prisma
+Ajouter client Prisma ( Ajouter du code js pour interagir avec le cloud neon)
+npx prisma db push (prérequis , le schéma + le client PRISMA)
+npx prisma generate
+## optionnel:
+npx prisma db pull --dry-run
+npx prisma studio --port 5000
+npx prisma studio (par défaut 5555 ==> http://localhost:5555)
+npm run dev 
