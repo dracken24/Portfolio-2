@@ -21,62 +21,81 @@ export default function Home()
 			<MenuState>
 				{(menuState, toggleMenu) => (
 					<>
-						{/* <Menu toggleMenu={toggleMenu} showMenu={menuState} /> */}
-						{/* <Navigation toggleMenu={toggleMenu} showMenu={menuState} /> */}
 						<Header />
 					</>
 				)}
 			</MenuState>
 			
-			<Container className="accueil_body">
-				<Typography>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.  
-					
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.  
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.  
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.  
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.    
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-					Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.  
-				</Typography>
+			{/* Bref description de moi */}
+			<Container className="accueil_body" sx={{ marginTop: '178px' }}>
+				<Box>
+					<Typography 
+						variant="h1" 
+						sx={{ 
+							fontSize: '20px', 
+							fontWeight: 'bold',
+							whiteSpace: 'pre-line',
+						}}
+						bgcolor="#add0d0"
+					>
+						Breve description
+						{'\n\n'}
+
+					</Typography>
+					<Typography 
+						bgcolor="#add0fa"
+					>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+						Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+						Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+						Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+						Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.  
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+						Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+						Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						
+					</Typography>
+				</Box>
 			</Container>
 			
+			{/* Faire un slide aleatoire des projets */}
+			<Container className="accueil_body">
+				<Box>
+					<Typography 
+						variant="h1" 
+						sx={{ 
+							fontSize: '20px', 
+							fontWeight: 'bold',
+							whiteSpace: 'pre-line'
+						}}
+						bgcolor="#add0d0"
+					>
+						Faire un slide aleatoire des projets ici
+						{'\n\n'}
+
+					</Typography>
+				</Box>
+			</Container>
+			
+			{/* Autre section a discuter */}
+			<Container className="accueil_body">
+				<Box>
+					<Typography 
+						variant="h1" 
+						sx={{ 
+							fontSize: '20px', 
+							fontWeight: 'bold',
+							whiteSpace: 'pre-line'
+						}}
+						bgcolor="#add0d0"
+					>
+						Autre section a discuter
+						{'\n\n'}
+
+					</Typography>
+				</Box>
+			</Container>
 			<Footer />
 		</Box>
 	);
