@@ -81,9 +81,9 @@ const Header = () =>
 			<div className="container">
 				<h1>
 					<span className="line">Spécialité</span>
-					<span className="line">Programmation objets</span>
+					<span className="line">Programmation</span>
 					<span className="line">
-						<span className="color">&</span> plus.
+						<span className="color"> Orientée Web</span>
 					</span>
 				</h1>
 				<div className="buttons">
