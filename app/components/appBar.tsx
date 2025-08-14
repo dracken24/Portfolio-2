@@ -9,10 +9,9 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { useState, useEffect } from "react";
-import { useRouter } from 'next/navigation';
-import Box from '@mui/material/Box';
 import Link from "next/link";
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from "react";
 
 import './components.css';
 
@@ -51,37 +50,14 @@ export default function AppBarComponent()
 		router.push(link);
 	};
 
-	const handleMenuItemClick = (action: string) =>
-	{
-		switch(action)
-		{
-			case 'Accueil':
-				router.push('/');
-				break;
-			case 'Projets':
-				router.push('/projets');
-				break;
-			case 'À propos':
-				router.push('/a-propos');
-				break;
-			case 'Contact':
-				router.push('/contact');
-				break;
-			case 'Admin':
-				router.push('/admin');
-				break;
-		}
-		handleMenuClose();
-	};
-
 	return (
-		<AppBar className={`my-app-bar ${darkMode ? 'dark-mode' : ''}`} position="static">
+		<AppBar className={`my-app-bar ${darkMode ? 'dark-mode' : ''}`} position="fixed">
 			<Toolbar>
-				<Box sx={{ flexGrow: 1 }}>
-					<Link href="/">
-						<Typography variant="h6" className="my-typography" color="black">Portfolio</Typography>
-					</Link>
-				</Box>
+
+				<Typography variant="h6" className="my-typography" color="black">
+					<Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>Portfolio</Link>
+				</Typography>
+
 				<IconButton 
 					edge="start" 
 					color="inherit" 
