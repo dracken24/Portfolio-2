@@ -5,76 +5,45 @@
 ### 1. GET - Obtenir tous les projets (liste vide au début)
 GET {{baseUrl}}/api/projects
 
-### 2. POST - Ajouter le premier projet
-POST {{baseUrl}}/api/projects
-Content-Type: {{contentType}}
+### 2. POST - Ajouter un projet test
+# POST {{baseUrl}}/api/projects
+# Content-Type: {{contentType}}
 
 # {
-#   "name": "MacBook Air M2",
-#   "price": 1299.99
+#   "name": "Project Test",
+#   "description": "La description du project",
+#   "technologies": "Les technologies utilisees",
+#   "status": "Terminee",
+#   "url": "urlDuProject.com",
+#   "createdAt": "2025-08-08T16:54:03.199Z",
+#   "updatedAt": "2025-08-08T16:54:03.199Z"
 # }
-
-{
-  "id": 4,
-  "name": "Project Test",
-  "description": "La description du project",
-  "technologies": "Les technologies utilisees",
-  "status": "Terminee",
-  "url": "urlDuProject.com",
-  "createdAt": "2025-08-08T16:54:03.199Z",
-  "updatedAt": "2025-08-08T16:54:03.199Z"
-}
-
-### 3. POST - Ajouter un deuxième produit
-POST {{baseUrl}}/api/projects
-Content-Type: {{contentType}}
-
-{
-  "name": "iPad Pro 12.9",
-  "price": 899.99
-}
-
-### 4. POST - Ajouter un troisième produit
-POST {{baseUrl}}/api/projects
-Content-Type: {{contentType}}
-
-{
-  "name": "AirPods Pro",
-  "price": 279.99
-}
 
 ### 5. GET - Vérifier que tous les produits sont listés
 GET {{baseUrl}}/api/projects
 
 ### 6. GET - Obtenir un produit par ID (bonus)
-GET {{baseUrl}}/api/projects/1
+GET {{baseUrl}}/api/projects/6
 
 ### 7. PUT - Modifier le premier produit
-PUT {{baseUrl}}/api/projects/1
+PUT {{baseUrl}}/api/projects/6
 Content-Type: {{contentType}}
 
 {
-  "name": "MacBook Air M2 - Edition Spéciale",
-  "price": 1399.99
+  "name": "6",
+  "description": "Ceci est un test",
+  "technologies": "n / a",
+  "status": "WIP",
+  "url": ""
 }
 
 ### 8. GET - Vérifier que le produit a été modifié
-GET {{baseUrl}}/api/projects/1
+GET {{baseUrl}}/api/projects/6
 
 ### 9. DELETE - Supprimer le produit avec ID 2
-DELETE {{baseUrl}}/api/projects/2
+DELETE {{baseUrl}}/api/projects/7
 
-### 10. GET - Vérifier que le produit a été supprimé
-GET {{baseUrl}}/api/projects
 
-### 11. DELETE - Supprimer le produit avec ID 1
-DELETE {{baseUrl}}/api/projects/1
-
-### 12. DELETE - Supprimer le produit avec ID 3
-DELETE {{baseUrl}}/api/projects/3
-
-### 13. GET - Vérifier que la liste est vide
-GET {{baseUrl}}/api/projects
 
 ###
 ### TESTS D'ERREURS
