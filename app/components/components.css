@@ -48,16 +48,3 @@ body {
     padding-top: 56px;
   }
 }
-
-
-
-/* Réduire les z-index des animations pour qu'elles ne passent pas au-dessus du footer */
-.forest, .silhouette, .moon {
-  z-index: 1 !important;
-}
-
-/* S'assurer que les sections restent au-dessus des animations de fond */
-#about, #projects, #contact {
-  z-index: 5 !important;
-  position: relative;
-}

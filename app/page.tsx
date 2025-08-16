@@ -4,7 +4,6 @@ import AppBarComponent from './components/appBar';
 import Header from './components/Header';
 // import Menu from './components/Menu';
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Footer from './components/Footer';
 import MenuState from './components/MenuState';
@@ -27,8 +26,8 @@ export default function Home()
 			</MenuState>
 			
 			{/* Bref description de moi */}
-			<Container className="accueil_body" sx={{ marginTop: '178px' }}>
-				<Box>
+			<Box className="accueil_body" sx={{ marginTop: '178px' }}>
+				<Box sx={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
 					<Typography 
 						variant="h1" 
 						sx={{ 
@@ -57,11 +56,11 @@ export default function Home()
 						
 					</Typography>
 				</Box>
-			</Container>
+			</Box>
 			
 			{/* Faire un slide aleatoire des projets */}
-			<Container className="accueil_body">
-				<Box>
+			<Box className="accueil_body">
+				<Box sx={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
 					<Typography 
 						variant="h1" 
 						sx={{ 
@@ -69,18 +68,18 @@ export default function Home()
 							fontWeight: 'bold',
 							whiteSpace: 'pre-line'
 						}}
-						bgcolor="#add0d0"
+						bgcolor="#ad70d0"
 					>
 						Faire un slide aleatoire des projets ici
 						{'\n\n'}
 
 					</Typography>
 				</Box>
-			</Container>
+			</Box>
 			
 			{/* Autre section a discuter */}
-			<Container className="accueil_body">
-				<Box>
+			<Box className="accueil_body">
+				<Box sx={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
 					<Typography 
 						variant="h1" 
 						sx={{ 
@@ -95,7 +94,7 @@ export default function Home()
 
 					</Typography>
 				</Box>
-			</Container>
+			</Box>
 			<Footer />
 		</Box>
 	);
