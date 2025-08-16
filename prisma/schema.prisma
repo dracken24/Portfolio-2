@@ -10,15 +10,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Project {
-  id    Int     @id @default(autoincrement())
-  name  String
-  description String
-  technologies String
-  status String
-  url String
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("admin")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("User")
+}
+
+model Project {
+  id           Int      @id @default(autoincrement())
+  name         String
+  description  String
+  technologies String
+  status       String
+  url          String?
+  imageUrl     String?  // URL de l'image du projet
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
   @@map("Project")
 }

@@ -13,20 +13,26 @@ import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from "react";
 
+import LoginModal from './LoginModal';
 import './components.css';
 
 export default function AppBarComponent()
 {
 	const [darkMode, setDarkMode] = useState(false);
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+	const [loginModalOpen, setLoginModalOpen] = useState(false);
 	const open = Boolean(anchorEl);
 	const router = useRouter();
 
 	// Appliquer le thème sombre au body
-	useEffect(() => {
-		if (darkMode) {
+	useEffect(() =>
+	{
+		if (darkMode)
+		{
 			document.body.classList.add('dark-mode');
-		} else {
+		}
+		else
+		{
 			document.body.classList.remove('dark-mode');
 		}
 	}, [darkMode]);
@@ -41,58 +47,72 @@ export default function AppBarComponent()
 		setAnchorEl(null);
 	};
 	
-		const handleDarkModeToggle = () => {
+	const handleDarkModeToggle = () =>
+	{
 		setDarkMode(!darkMode);
 	};
 	
-		const handleLinkClick = (link: string) =>
+	const handleLinkClick = (link: string) =>
 	{
 		router.push(link);
 	};
 
+	const handleAdminClick = () =>
+	{
+		handleMenuClose();
+		setLoginModalOpen(true);
+	};
+
 	return (
-		<AppBar className={`my-app-bar ${darkMode ? 'dark-mode' : ''}`} position="fixed">
-			<Toolbar>
+		<>
+			<AppBar className={`my-app-bar ${darkMode ? 'dark-mode' : ''}`} position="fixed">
+				<Toolbar>
 
-				<Typography variant="h6" className="my-typography" color="black">
-					<Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>Portfolio</Link>
-				</Typography>
+					<Typography variant="h6" className="my-typography" color="black">
+						<Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>Portfolio</Link>
+					</Typography>
 
-				<IconButton 
-					edge="start" 
-					color="inherit" 
-					aria-label="menu"
-					onClick={handleMenuClick}
-					aria-controls={open ? 'basic-menu' : undefined}
-					aria-haspopup="true"
-					aria-expanded={open ? 'true' : undefined}
-				>
-					<MenuIcon />
-				</IconButton>
-				<Menu
-					id="basic-menu"
-					anchorEl={anchorEl}
-					open={open}
-					onClose={handleMenuClose}
-				>
-					<MenuItem onClick={() => handleLinkClick('/')}>Accueil</MenuItem>
-					<MenuItem onClick={() => handleLinkClick('/projets')}>Projets</MenuItem>
-					<MenuItem onClick={() => handleLinkClick('/a-propos')}>À propos</MenuItem>
-					<MenuItem onClick={() => handleLinkClick('/contact')}>Contact</MenuItem>
-					<MenuItem onClick={() => handleLinkClick('/admin')}>Admin</MenuItem>
-				</Menu>
-				<IconButton 
-					edge="end" 
-					color="inherit" 
-					aria-label="dark mode toggle" 
-					onClick={handleDarkModeToggle}
-					style={{
-						color: darkMode ? '#ffffff' : '#ffffff'  // Blanc dans les deux modes
-					}}
-				> 
-					{darkMode ? <LightModeIcon /> : <DarkModeIcon />}
-				</IconButton>
-			</Toolbar>
-		</AppBar>
+					<IconButton 
+						edge="start" 
+						color="inherit" 
+						aria-label="menu"
+						onClick={handleMenuClick}
+						aria-controls={open ? 'basic-menu' : undefined}
+						aria-haspopup="true"
+						aria-expanded={open ? 'true' : undefined}
+					>
+						<MenuIcon />
+					</IconButton>
+					<Menu
+						id="basic-menu"
+						anchorEl={anchorEl}
+						open={open}
+						onClose={handleMenuClose}
+					>
+						<MenuItem onClick={() => handleLinkClick('/')}>Accueil</MenuItem>
+						<MenuItem onClick={() => handleLinkClick('/projets')}>Projets</MenuItem>
+						<MenuItem onClick={() => handleLinkClick('/a-propos')}>À propos</MenuItem>
+						<MenuItem onClick={() => handleLinkClick('/contact')}>Contact</MenuItem>
+						<MenuItem onClick={handleAdminClick}>Admin</MenuItem>
+					</Menu>
+					<IconButton 
+						edge="end" 
+						color="inherit" 
+						aria-label="dark mode toggle" 
+						onClick={handleDarkModeToggle}
+						style={{
+							color: darkMode ? '#ffffff' : '#ffffff'  // Blanc dans les deux modes
+						}}
+					> 
+						{darkMode ? <LightModeIcon /> : <DarkModeIcon />}
+					</IconButton>
+				</Toolbar>
+			</AppBar>
+			
+			<LoginModal 
+				open={loginModalOpen} 
+				onClose={() => setLoginModalOpen(false)} 
+			/>
+		</>
 	)
 }

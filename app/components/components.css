@@ -1,10 +1,10 @@
 .my-app-bar {
-    background-color: #303030 !important;
-    z-index: 1100 !important;
+	background-color: #303030 !important;
+	z-index: 1100 !important;
 }
 
 .my-typography {
-    flex-grow: 1;
+	flex-grow: 1;
 }
 
 /* Styles pour le mode sombre */
@@ -45,6 +45,259 @@ body {
 /* Ajustement pour les écrans plus petits */
 @media (max-width: 600px) {
   body {
-    padding-top: 56px;
+	padding-top: 56px;
   }
+}
+
+/* Styles pour ProjectSlideshow */
+.project-slideshow-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0rem 1rem;
+  position: relative;
+}
+
+.project-slideshow-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 1rem;
+  color: #1976d2;
+}
+
+.project-slideshow-main {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.project-slideshow-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+}
+
+.project-slideshow-nav-button:hover {
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.project-slideshow-nav-button.prev {
+  left: 20px;
+}
+
+.project-slideshow-nav-button.next {
+  right: 20px;
+}
+
+.project-slideshow-cards-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  position: relative;
+  padding: 0 80px;
+}
+
+.project-card {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card.side {
+  max-width: 300px;
+  width: 100%;
+  height: 432px;
+  opacity: 0.4;
+  transform: scale(1);
+  filter: brightness(0.7);
+  z-index: 1;
+}
+
+.project-card.center {
+  max-width: 800px;
+  width: 100%;
+  height: 540px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  border-radius: 16px;
+  z-index: 2;
+  transform: scale(1);
+}
+
+.project-card-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1.2rem;
+  color: white;
+}
+
+.project-card-header.center {
+  padding: 1.6rem;
+  flex-shrink: 0;
+}
+
+.project-card-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.project-card-title.center {
+  margin-bottom: 1rem;
+}
+
+.project-card-status {
+  background-color: rgba(255,255,255,0.2);
+  color: white;
+  font-weight: bold;
+}
+
+.project-card-image-container {
+  padding: 0 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-card-image-container.center {
+  padding: 0 2rem;
+  flex-shrink: 0;
+}
+
+.project-card-image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.project-card-image.center {
+  height: 150px;
+  border-radius: 12px;
+}
+
+.project-card-image.side {
+  height: 120px;
+}
+
+.project-card-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card-content.center {
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.project-card-description {
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
+}
+
+.project-card-description.center {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  flex-shrink: 0;
+}
+
+.project-card-technologies-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.project-card-technologies-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.project-card-technology-chip {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  font-weight: 500;
+}
+
+.project-card-link-container {
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+.project-card-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #1976d2;
+  font-weight: bold;
+}
+
+.project-card-link:hover {
+  text-decoration: underline;
+}
+
+.project-slideshow-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.project-slideshow-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.project-slideshow-indicator.active {
+  background-color: #1976d2;
+}
+
+.project-slideshow-indicator.inactive {
+  background-color: #e0e0e0;
+}
+
+.project-slideshow-indicator.inactive:hover {
+  background-color: #bdbdbd;
+}
+
+.project-slideshow-counter {
+  text-align: center;
+  margin-top: 1rem;
+  color: #666;
+}
+
+.project-slideshow-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.project-slideshow-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
 }
