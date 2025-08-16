@@ -9,7 +9,8 @@ const Footer = () =>
 	const [isVisible, setIsVisible] = useState(false);
 
 	// Écouter les changements de thème depuis l'AppBar
-	useEffect(() => {
+	useEffect(() =>
+	{
 		const checkDarkMode = () =>
 		{
 			const isDarkMode = document.body.classList.contains('dark-mode');
@@ -21,10 +22,13 @@ const Footer = () =>
 
 		// Observer les changements de classe sur le body
 		const observer = new MutationObserver(checkDarkMode);
-		observer.observe(document.body, {
-			attributes: true,
-			attributeFilter: ['class']
-		});
+		observer.observe(
+			document.body,
+			{
+				attributes: true,
+				attributeFilter: ['class']
+			}
+		);
 
 		return () => observer.disconnect();
 	}, []);
@@ -54,10 +58,13 @@ const Footer = () =>
 			className={isVisible ? "fixed-footer" : "hidden-footer"} 
 		>
 			<Box className="container">
-				<div className="footer-text" style={{ 
-					color: darkMode ? '#fafafa' : '#000000',
-					fontSize: '1rem'
-				}}>
+				<div className="footer-text" 
+				style={
+					{ 
+						color: darkMode ? '#fafafa' : '#000000',
+						fontSize: '1rem'
+					}
+				}>
 					&copy; 2025 - Tous droits réservés
 				</div>
 			</Box>
