@@ -37,21 +37,26 @@ export default async function ProductDetail({ params }: { params: { id: string }
 			{/* <AppBarComponent /> */}
 			<Typography variant="h1">Projets</Typography>
 			
-			<Card sx={{padding: 5}}>
+			<Card sx={{padding: 5, width: '50%'}}>
 				<Stack spacing={2} direction="row">
 					<Typography variant="h2">{project.name}</Typography>
 					<Button variant="outlined" disabled>{project.status}</Button>
 				</Stack>
 				
 				<Box>
-					<Typography><Link href={project.url}>{project.url}</Link></Typography>
-				
-					<Typography variant="subtitle2">{project.technologies}</Typography>
+					<Box sx={{padding: 1}}>
+						<Typography><Link href={project.url}>{project.url}</Link></Typography>
+						<Typography variant="subtitle2">{project.technologies}</Typography>
+					</Box>
 					
-					<Typography variant="body1">{project.description}</Typography>
+					<Box sx={{padding: 1}}>
+						<Typography variant="body1">{project.description}</Typography>
+					</Box>
 					
-					<Typography variant="body2">Créé le {new Date(project.createdAt).toLocaleString()}</Typography>
-					<Typography variant="body2">Mis à jour le {new Date(project.updatedAt).toLocaleString()}</Typography>
+					<Box sx={{padding: 1}}>
+						<Typography variant="body2">Créé le {new Date(project.createdAt).toLocaleString()}</Typography>
+						<Typography variant="body2">Mis à jour le {new Date(project.updatedAt).toLocaleString()}</Typography>
+					</Box>
 					
 					<Stack spacing={2} direction="row">
 						<Button variant="text" href={`/projets/${project.id}/edit`}>Modifier</Button>

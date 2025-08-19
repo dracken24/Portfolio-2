@@ -8,6 +8,7 @@ import AppBarComponent from '../components/appBar';
 
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import Toolbar from "@mui/material/Toolbar";
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -58,13 +59,24 @@ export default function Projets()
 		}
 	}
 	
-	function createLoadingCard() {
+	function createLoadingCard(message: string) {
 	    return (
-			// <Card>
-			// 	<CardContent>
-					<Typography>Chargement...</Typography>
-			// 	</CardContent>
-			// </Card>
+			<Card>
+				<CardContent>
+					<Typography>{message}</Typography>
+				</CardContent>
+			</Card>
+		)
+	}
+	
+	function createErrorCard(error: any) {
+	    return (
+			<Card>
+				<CardContent>
+					<Typography color="error">{error}</Typography>
+					{/* <p className="text-red-600">{error}</p> */}
+				</CardContent>
+			</Card>
 		)
 	}
 	
@@ -72,12 +84,12 @@ export default function Projets()
 	    return (
 			<Card sx={{ maxWidth: 450 }}>
 				<CardContent>
-					<Typography gutterBottom variant="h5" component="div">
+					<Typography gutterBottom variant="h5" component="div" sx={{padding: 1}}>
 						<Link className="font-medium underline" href={`/projets/${id}`}>{name}</Link>
 					</Typography>
 					
-					<Typography variant="body2" sx={{ color: 'text.secondary' }}>{description}</Typography>
-					<Typography><Link href={url}>{url}</Link></Typography>
+					<Typography variant="body2" sx={{ color: 'text.secondary', padding: 1}}>{description}</Typography>
+					<Typography sx={{padding: 1}}><Link href={url}>{url}</Link></Typography>
 					
 					<Stack spacing={2} direction="row">
 						<Button variant="text" href={`/projets/${id}/edit`}>Modifier</Button>
@@ -87,7 +99,9 @@ export default function Projets()
 			</Card>
 		)
 	}
-
+	
+	console.log({error})
+	
 	return (
 		<Box>
 			{/* AppBar */}
@@ -95,15 +109,20 @@ export default function Projets()
 
 			<Typography variant="h1">Projets</Typography>
 			
-			<Button variant="contained" color="success" href="/projets/new">Nouveau projet</Button>
+			<Toolbar>
+				<Button variant="contained" color="success" href="/projets/new">Nouveau projet</Button>
+			</Toolbar>
+			
 			
 			<Box>
 				{/* {loading && <p>Chargement...</p>} */}
-				{loading && createLoadingCard()}
+				{loading && createLoadingCard("Chargement...")}
 				
+				{/* console.log({error}) */}
+				{/* {error && createErrorCard({error})} */}
 				{error && <p className="text-red-600">{error}</p>}
 				
-				{!loading && projects.length === 0 && (<p>Aucun projet.</p>)}
+				{/* {!loading && projects.length === 0 && (<p>Aucun projet.</p>)} */}
 				
 				<Box
 					sx={{
