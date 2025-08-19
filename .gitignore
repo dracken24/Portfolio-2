@@ -38,6 +38,8 @@ next-env.d.ts
 .vscode/*
 .vscode/
 
+scripts\createAdmin.js
+
 
 
 
