@@ -9,7 +9,7 @@ export async function GET()
 		const projects = await prisma.project.findMany({
 			orderBy:
 			{
-				id: 'desc'
+				id: 'asc'
 			}
 		})
 		

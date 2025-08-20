@@ -5,9 +5,15 @@ Application Next.js avec 4 services web REST pour gérer des produits.
 ## Démarrage rapide
 
 ```bash
+# Installation automatique (recommandé)
+npm run install
+
+# OU installation manuelle
 npm install
 npx prisma generate
 npx prisma db push
+
+# Lancer l'application
 npm run dev
 ```
 

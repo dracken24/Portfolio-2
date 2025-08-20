@@ -9,39 +9,27 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from 'next/navigation';
+import { useTheme } from '../contexts/ThemeContext';
 
 import './components.css';
 
-export default function AppBarComponent()
-{
-	const [darkMode, setDarkMode] = useState(false);
+export default function AppBarComponent() {
+	const { isDarkMode, toggleTheme } = useTheme();
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 	const router = useRouter();
 
-	// Appliquer le thème sombre au body
-	useEffect(() => {
-		if (darkMode) {
-			document.body.classList.add('dark-mode');
-		} else {
-			document.body.classList.remove('dark-mode');
-		}
-	}, [darkMode]);
-
-	const handleMenuClick = (event: React.MouseEvent<HTMLElement>) =>
-	{
+	const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorEl(event.currentTarget);
 	};
 
-	const handleMenuClose = () =>
-	{
+	const handleMenuClose = () => {
 		setAnchorEl(null);
 	};
 
-	const handleMenuItemClick = (action: string) =>
-	{
+	const handleMenuItemClick = (action: string) => {
 		switch(action) {
 		case 'Accueil':
 			router.push('/');
@@ -59,14 +47,12 @@ export default function AppBarComponent()
 		handleMenuClose();
 	};
 
-	const handleDarkModeToggle = () => {
-		setDarkMode(!darkMode);
-	};
-
 	return (
-		<AppBar className={`my-app-bar ${darkMode ? 'dark-mode' : ''}`} position="static">
+		<AppBar position="static">
 			<Toolbar>
-				<Typography variant="h6" className="my-typography">Portfolio</Typography>
+				<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+					Portfolio
+				</Typography>
 				<IconButton 
 					edge="start" 
 					color="inherit" 
@@ -93,12 +79,9 @@ export default function AppBarComponent()
 					edge="end" 
 					color="inherit" 
 					aria-label="dark mode toggle" 
-					onClick={handleDarkModeToggle}
-					style={{
-						color: darkMode ? '#ffffff' : '#ffffff'  // Blanc dans les deux modes
-					}}
+					onClick={toggleTheme}
 				> 
-					{darkMode ? <LightModeIcon /> : <DarkModeIcon />}
+					{isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
 				</IconButton>
 			</Toolbar>
 		</AppBar>
