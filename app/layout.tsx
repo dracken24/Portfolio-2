@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import ThemeWrapper from './components/ThemeWrapper'
+import Footer from './components/Footer'
 
 export const metadata: Metadata = {
   title: 'Laboratoire 2 - Services Web',
@@ -11,7 +12,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr">
       <body>
         <ThemeWrapper>
-          {children}
+          <div style={{ 
+            minHeight: '100vh', 
+            display: 'flex', 
+            flexDirection: 'column' 
+          }}>
+            {children}
+            <Footer />
+          </div>
         </ThemeWrapper>
       </body>
     </html>
