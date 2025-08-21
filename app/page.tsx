@@ -107,7 +107,7 @@ export default function Home() {
       <Container maxWidth="lg" sx={{ py: 8 }}>
         <Box sx={{ 
           display: 'grid', 
-          gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' },
+          gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
           gap: 4,
           mb: 8
         }}>
@@ -138,16 +138,6 @@ export default function Home() {
             </Typography>
             <Typography variant="body1" color="text.secondary">
               Prenons contact et discutons de vos projets
-            </Typography>
-          </FeatureCard>
-
-          <FeatureCard onClick={() => handleCardClick('/')}>
-            <HomeIcon sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
-            <Typography variant="h5" gutterBottom>
-              Accueil
-            </Typography>
-            <Typography variant="body1" color="text.secondary">
-              Bienvenue sur mon portfolio professionnel
             </Typography>
           </FeatureCard>
         </Box>
