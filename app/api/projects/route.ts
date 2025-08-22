@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma'
+import { staticProjects } from '@/lib/staticData'
 import { NextRequest, NextResponse } from 'next/server'
 
 // GET /api/projects - Obtenir tous les projects
@@ -6,6 +7,15 @@ export async function GET()
 {
 	try
 	{
+		// Vérifier si la base de données est disponible
+		if (!process.env.DATABASE_URL) {
+			return NextResponse.json({
+				success: true,
+				data: staticProjects,
+				message: `${staticProjects.length} projet(s) trouvé(s) (mode statique)`
+			})
+		}
+
 		const projects = await prisma.project.findMany({
 			orderBy:
 			{
@@ -25,7 +35,8 @@ export async function GET()
 		return NextResponse.json(
 			{
 				success: false,
-				error: 'Erreur lors de la récupération des projects'
+				error: 'Erreur lors de la récupération des projects',
+				data: []
 			},
 			{
 				status: 500

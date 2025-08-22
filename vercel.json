@@ -1,13 +1,8 @@
 {
-  "buildCommand": "npm run build",
-  "installCommand": "npm install",
   "framework": "nextjs",
   "functions": {
     "app/api/**/*.ts": {
       "maxDuration": 30
     }
-  },
-  "env": {
-    "PRISMA_GENERATE_DATAPROXY": "true"
   }
 }
