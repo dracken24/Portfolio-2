@@ -6,6 +6,19 @@ const nextConfig = {
   webpack: (config) => {
     config.externals = [...config.externals, '@prisma/client']
     return config
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+      {
+        protocol: 'http',
+        hostname: '**',
+      },
+    ],
+    unoptimized: true
   }
 }
 
