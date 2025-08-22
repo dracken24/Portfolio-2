@@ -25,7 +25,6 @@ import {
 	Toolbar,
 	Typography
 } from '@mui/material';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -321,29 +320,16 @@ export default function AdminDashboard() {
                         </TableCell>
                         <TableCell>
                           {project.imageUrl ? (
-                            getImageUrl(project.imageUrl).startsWith('http') ? (
-                              <img 
-                                src={getImageUrl(project.imageUrl)} 
-                                alt={project.name}
-                                style={{ 
-                                  width: '50px',
-                                  height: '50px',
-                                  objectFit: 'cover',
-                                  borderRadius: '4px'
-                                }}
-                              />
-                            ) : (
-                              <Image 
-                                src={getImageUrl(project.imageUrl)} 
-                                alt={project.name}
-                                width={50}
-                                height={50}
-                                style={{ 
-                                  objectFit: 'cover',
-                                  borderRadius: '4px'
-                                }}
-                              />
-                            )
+                            <img 
+                              src={getImageUrl(project.imageUrl)} 
+                              alt={project.name}
+                              style={{ 
+                                width: '50px',
+                                height: '50px',
+                                objectFit: 'cover',
+                                borderRadius: '4px'
+                              }}
+                            />
                           ) : (
                             <span style={{ color: '#999' }}>Aucune image</span>
                           )}
