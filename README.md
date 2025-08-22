@@ -1,42 +1,132 @@
 # Laboratoire 2 - Services Web REST
 
-Application Next.js avec 4 services web REST pour gérer des produits.
+****Portfolio Web - Next.js avec Material-UI****
 
-## Démarrage rapide
+Portfolio web moderne développé avec Next.js 14, Material-UI, TypeScript et Prisma.
+
+- Nadia DESJARDINS
+- Jean-François LEFEBVRE,
+- Natacha MEYER
+
+## Description du projet et du domaine métier choisi
+
+On a décidé de faire un portfolio de projets. Ceci étant dit, ce n'est pas un portfolio officiel. C'était développé avec l'intention de créer un bon portfolio qui peut être utilisé comme un modèle de base.
+
+**Repositories:**
+[Ijipop/portfolio](https://github.com/Ijipop/portfolio.git)
+<!--
+ancienne version:
+~~[dracken24/Portfolio-2](https://github.com/dracken24/Portfolio-2)~~
+-->
+
+## Instructions d'installation et de configuration
+
+### Prérequis
+
+- **Node.js** 18+ ([Télécharger](https://nodejs.org/))
+- **Git** ([Télécharger](https://git-scm.com/))
+- **Compte Neon.tech** pour la base de données PostgreSQL
+
+Une fois vous avez clone le projet, veuillez creez une base de donnees dans votre compte Neon.tech et copier la string de connection.
+Une string similaire a ceci:
+`postgresql://neondb_owner:***************@ep-rapid-sky-ad5triop-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require`
+
+Dans la root du projet, veuillez creer une fichier `.env` et le remplir comme ceci-ci:
+
+```
+# ===== BASE DE DONNÉES NEON/POSTGRESQL =====
+DATABASE_URL = "[votre string ici]"
+```
+
+Une fois faite, vous pouvez le lancer:
 
 ```bash
+# Installation
 npm install
 npx prisma generate
 npx prisma db push
+
+# Lancer l'application
 npm run dev
 ```
 
-## Documentation complète
+L'application sera disponible sur `http://localhost:3000`
 
-Consultez le dossier `documentation/` pour tous les guides (par ordre d'utilisation) :
+Pour pouvez faire des tests avec l'aide du fichier `api.http` dans `./tests/`
 
-- **[01-DEMARRAGE_RAPIDE.md](documentation/01-DEMARRAGE_RAPIDE.md)** - Installation en 5 minutes
-- **[02-GUIDE_ETUDIANT.md](documentation/02-GUIDE_ETUDIANT.md)** - Guide pas-à-pas pour les étudiants  
-- **[03-README.md](documentation/03-README.md)** - Documentation technique complète
-- **[04-EXEMPLES_TESTS.md](documentation/04-EXEMPLES_TESTS.md)** - Exemples de tests Postman/curl
-- **[05-EXPLICATION_CODE.md](documentation/05-EXPLICATION_CODE.md)** - Explication détaillée du code (collection)
-- **[06-EXPLICATION_ROUTES_DYNAMIQUES.md](documentation/06-EXPLICATION_ROUTES_DYNAMIQUES.md)** - Routes dynamiques [id]
-- **[07-LABORATOIRE_PROJET_LIBRE.md](documentation/07-LABORATOIRE_PROJET_LIBRE.md)** - Laboratoire 3 : Projet libre
-- **[08-EXERCICES_SIMPLES.md](documentation/08-EXERCICES_SIMPLES.md)** - Exercices simples progressifs
-- **[09-EXERCICE_SERVICES_AVANCES.md](documentation/09-EXERCICE_SERVICES_AVANCES.md)** - Exercices avancés
-- **[10-MIGRATION_SCHEMA.md](documentation/10-MIGRATION_SCHEMA.md)** - Migration du schéma et adaptation
+## Architecture technique
 
-## Services disponibles
+```
+PORTFOLIO/
+├── app/
+│   ├── a_propos
+│   │   └── page.tsx
+│   ├── admin/dashboard/
+│   │   └── page.tsx
+│   ├── api/
+│   │   ├── auth/login
+│   │   │  └── route.ts
+│   │   └── projects/
+│   │       ├── route.ts
+│   │       └── [id]
+│   │           └── route.ts
+│   │
+│   ├── components/
+│   ├── contact
+│   │   └── page.tsx
+│   ├── contexts
+│   ├── projets
+│   │   └── page.tsx
+│   ├── layout.tsx
+│   └── page.tsx
+│
+├── lib/
+├── prisma/
+├── public/imgs/links
+├── scripts/
+└── tests/
+```
 
-- `GET /api/products` - Lister tous les produits
-- `POST /api/products` - Ajouter un nouveau produit
-- `PUT /api/products/[id]` - Modifier un produit par ID
-- `DELETE /api/products/[id]` - Supprimer un produit par ID
+## Captures d'écran de l'interface utilisateur
 
-## Configuration requise
+### Page d'accueil
 
-1. Compte [Neon.tech](https://neon.tech) (PostgreSQL gratuit)
-2. Fichier `.env.local` avec `DATABASE_URL`
-3. Node.js 18+
+![picture](https://github.com/Ijipop/portfolio/blob/Ji/public/imgs/readme/accueil.png)
+Darkmode included!
+![picture](https://github.com/Ijipop/portfolio/blob/Ji/public/imgs/readme/darkmode.png)
 
-Voir `documentation/02-GUIDE_ETUDIANT.md` pour les instructions détaillées.
+Et grâce au Navbar, on peut naviguer d'une page à l'autre avec ces sélections :
+![picture](https://github.com/Ijipop/portfolio/blob/Ji/public/imgs/readme/navigation.png)
+
+### Prokets
+
+![picture](https://github.com/Ijipop/portfolio/blob/Ji/public/imgs/readme/projets.png)
+
+### A Propos
+
+![picture](https://github.com/Ijipop/portfolio/blob/Ji/public/imgs/readme/propos.png)
+
+### Contact
+
+![picture](https://github.com/Ijipop/portfolio/blob/Ji/public/imgs/readme/contact.png)
+
+### Admin
+
+Seulement accessible aux admins
+![picture](https://github.com/Ijipop/portfolio/blob/Ji/public/imgs/readme/admin_connect.png)
+Les admins peuvent ajouter , supprimer et modifier les projets ici.
+![picture](https://github.com/Ijipop/portfolio/blob/Ji/public/imgs/readme/admin_page.png)
+Ajouter un projet
+![picture](https://github.com/Ijipop/portfolio/blob/Ji/public/imgs/readme/admin_add.png)
+Si on laisse une section nécessaire vide, un pop-up va l'informer.
+![picture](https://github.com/Ijipop/portfolio/blob/Ji/public/imgs/readme/admin_missing.png)
+On peut modifier un projet en cliquant sur le bouton avec le crayon.
+![picture](https://github.com/Ijipop/portfolio/blob/Ji/public/imgs/readme/admin_edit.png)
+
+On peut supprimer un projet en cliquant sur le bouton avec la poubelle. Un pop-up pour confirmer va apparaître.
+![picture](https://github.com/Ijipop/portfolio/blob/Ji/public/imgs/readme/admin_delete.png)
+
+Pour plus informations:
+
+- Documentation des services ([fichier SERVICES.md](https://github.com/Ijipop/portfolio/blob/a32ed38faf62ae525a3cd6de8027445a5aa76a77/SERVICES.md))
+- Analyse du code ([fichier CODE_ANALYSIS.md](https://github.com/Ijipop/portfolio/blob/7534eb129791fc8de2c82600f6670bcb9f783ad9/CODE_ANALYSIS.md))

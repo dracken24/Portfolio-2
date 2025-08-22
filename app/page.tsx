@@ -1,91 +1,156 @@
-"use client";
+'use client'
 
-import AppBarComponent from './components/appBar';
-import Header from './components/Header';
-// import Menu from './components/Menu';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Footer from './components/Footer';
-import MenuState from './components/MenuState';
-import ProjectSlideshow from './components/ProjectSlideshow';
-// import Navigation from './components/Navigation';
+import AppBarComponent from './components/appBar'
+import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
+import { styled } from '@mui/material/styles'
+import HomeIcon from '@mui/icons-material/Home'
+import CodeIcon from '@mui/icons-material/Code'
+import PersonIcon from '@mui/icons-material/Person'
+import ContactSupportIcon from '@mui/icons-material/ContactSupport'
+import { useRouter } from 'next/navigation'
 
-export default function Home()
-{
-	return (
-		<Box>
-			{/* AppBar Material-UI existant */}
-			<AppBarComponent />
-			
-			{/* Composants adaptés du code importé */}
-			<MenuState>
-				{(menuState, toggleMenu) => (
-					<>
-						<Header />
-					</>
-				)}
-			</MenuState>
-			
-			{/* Bref description de moi */}
-			<Box className="accueil_body" sx={{ marginTop: '178px'}}>
-				<Box sx={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
-					<Typography 
-						variant="h1" 
-						sx={{ 
-							fontSize: '20px', 
-							fontWeight: 'bold',
-							whiteSpace: 'pre-line',
-							paddingTop: '20px',
-							justifyContent: 'center',
-							display: 'flex',
-						}}
-						bgcolor="#add0d0"
-					>
-						Qui suis-je?
-						{'\n\n'}
+const HeaderSection = styled(Box)(({ theme }) => ({
+  background: theme.palette.mode === 'dark' 
+    ? 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)'
+    : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+  color: 'white',
+  padding: theme.spacing(12, 0, 8),
+  textAlign: 'center',
+  position: 'relative',
+  overflow: 'hidden',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: theme.palette.mode === 'dark'
+      ? 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'
+      : 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
+    opacity: 0.3,
+  }
+}))
 
-					</Typography>
-					<Typography 
-						bgcolor="#add0fa"
-						sx={{ whiteSpace: 'pre-line' }}
-					>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales ligula ac ipsum dictum pellentesque. Aliquam a mi nec sapien sagittis luctus. Donec in arcu sed mauris ornare commodo. Nullam eleifend finibus magna non tempus. In condimentum diam et elit commodo dapibus. Ut placerat sapien sit amet dolor tristique, nec malesuada augue iaculis. Suspendisse potenti. Nam molestie porttitor consectetur. Sed at convallis tortor. Nunc tempor ligula nec congue rhoncus. Nullam dapibus pellentesque viverra. Donec vitae pulvinar nibh, in mattis ex. Duis et dolor mauris. Aenean dictum tincidunt fringilla. Maecenas consequat, lectus at rutrum dignissim, metus tortor sollicitudin urna, id varius libero nunc lobortis odio.
-						{'\n\n'}
-						Integer pellentesque, sem sit amet convallis cursus, odio risus efficitur turpis, sit amet vestibulum quam ipsum ac orci. Donec quis erat nunc. Ut fermentum turpis sit amet sem sodales porta. Ut ligula massa, auctor eu consectetur ut, iaculis eget tellus. Mauris at eleifend ipsum, nec pharetra nibh. Donec eu elit in turpis aliquet bibendum. Pellentesque ac ullamcorper erat, ut condimentum risus. Aliquam pretium nulla non diam venenatis pulvinar. Cras tristique magna volutpat libero ornare, luctus lacinia sapien imperdiet. Nullam sit amet ullamcorper ex, sit amet consectetur mauris. Aenean vel imperdiet arcu. Quisque viverra tellus a nunc pharetra, non vulputate arcu accumsan. Vivamus iaculis pellentesque accumsan. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-						{'\n\n'}
-						Sed id nisl tempus, aliquam diam ac, condimentum ante. Nunc quis enim vitae turpis rutrum elementum. Vestibulum mollis mauris eu eros elementum ultrices. Donec porttitor elit at malesuada tempor. Etiam eu auctor lorem. Curabitur metus neque, tempor vel blandit ut, pulvinar at ipsum. Ut felis nunc, vestibulum nec lacinia vestibulum, pellentesque id orci. Sed ut posuere ante. Vivamus sodales dapibus eros. Donec eu mauris at dui egestas dictum. Aliquam quis nunc felis. Nunc egestas sit amet leo vel sodales.
-						{'\n\n'}
-					</Typography>
-				</Box>
-			</Box>
-			
-			{/* Slideshow aléatoire des projets */}
-			<Box className="accueil_body" sx={{ 
-				background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-				padding: '3rem 0'
-			}}>
-				<ProjectSlideshow />
-			</Box>
-			
-			{/* Autre section a discuter */}
-			<Box className="accueil_body">
-				<Box sx={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
-					<Typography 
-						variant="h1" 
-						sx={{ 
-							fontSize: '20px', 
-							fontWeight: 'bold',
-							whiteSpace: 'pre-line'
-						}}
-						bgcolor="#add0d0"
-					>
-						Autre section a discuter
-						{'\n\n'}
+const FeatureCard = styled(Box)(({ theme }) => ({
+  background: theme.palette.mode === 'dark'
+    ? 'linear-gradient(145deg, #1e1e1e 0%, #2d2d2d 100%)'
+    : 'linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%)',
+  border: theme.palette.mode === 'dark' 
+    ? '1px solid rgba(255,255,255,0.1)' 
+    : '1px solid rgba(0,0,0,0.08)',
+  borderRadius: 20,
+  padding: theme.spacing(4),
+  textAlign: 'center',
+  boxShadow: theme.palette.mode === 'dark'
+    ? '0 8px 32px rgba(0,0,0,0.3)'
+    : '0 8px 32px rgba(0,0,0,0.1)',
+  transition: 'all 0.3s ease',
+  height: '100%',
+  cursor: 'pointer',
+  '&:hover': {
+    transform: 'translateY(-5px)',
+    boxShadow: theme.palette.mode === 'dark'
+      ? '0 20px 40px rgba(0,0,0,0.4)'
+      : '0 20px 40px rgba(0,0,0,0.15)',
+  }
+}))
 
-					</Typography>
-				</Box>
-			</Box>
-			<Footer />
-		</Box>
-	);
+export default function Home() {
+  const router = useRouter()
+
+  const handleCardClick = (path: string) => {
+    router.push(path)
+  }
+
+  return (
+    <Box sx={{ 
+      minHeight: '100vh', 
+      background: (theme) => theme.palette.mode === 'dark'
+        ? 'linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%)'
+        : 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)'
+    }}>
+      <AppBarComponent />
+      
+      <HeaderSection>
+        <Container maxWidth="lg">
+          <Typography 
+            variant="h1" 
+            component="h1" 
+            gutterBottom 
+            sx={{ 
+              fontWeight: 900,
+              fontSize: { xs: '3rem', md: '4.5rem' },
+              textShadow: '0 4px 8px rgba(0,0,0,0.3)',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase'
+            }}
+          >
+            Portfolio Web
+          </Typography>
+          <Typography 
+            variant="h5" 
+            sx={{ 
+              opacity: 0.9,
+              fontWeight: 300,
+              maxWidth: 600,
+              mx: 'auto'
+            }}
+          >
+            Développeur Full Stack passionné par les technologies modernes
+          </Typography>
+        </Container>
+      </HeaderSection>
+
+      <Container maxWidth="lg" sx={{ py: 8 }}>
+        <Box sx={{ 
+          display: 'grid', 
+          gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
+          gap: 4,
+          mb: 8
+        }}>
+          <FeatureCard onClick={() => handleCardClick('/projets')}>
+            <CodeIcon sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
+            <Typography variant="h5" gutterBottom>
+              Mes Projets
+            </Typography>
+            <Typography variant="body1" color="text.secondary">
+              Découvrez mes réalisations et explorations technologiques
+            </Typography>
+          </FeatureCard>
+
+          <FeatureCard onClick={() => handleCardClick('/a-propos')}>
+            <PersonIcon sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
+            <Typography variant="h5" gutterBottom>
+              À Propos
+            </Typography>
+            <Typography variant="body1" color="text.secondary">
+              En savoir plus sur mon parcours et mes compétences
+            </Typography>
+          </FeatureCard>
+
+          <FeatureCard onClick={() => handleCardClick('/contact')}>
+            <ContactSupportIcon sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
+            <Typography variant="h5" gutterBottom>
+              Contact
+            </Typography>
+            <Typography variant="body1" color="text.secondary">
+              Prenons contact et discutons de vos projets
+            </Typography>
+          </FeatureCard>
+        </Box>
+
+        <Box sx={{ textAlign: 'center', mt: 8 }}>
+          <Typography variant="h4" gutterBottom sx={{ mb: 2 }}>
+            Bienvenue sur mon portfolio
+          </Typography>
+          <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
+            Explorez mes projets, découvrez mon parcours et n'hésitez pas à me contacter pour collaborer sur vos idées.
+          </Typography>
+        </Box>
+      </Container>
+    </Box>
+  )
 }

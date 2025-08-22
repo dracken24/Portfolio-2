@@ -56,6 +56,28 @@ export default function AdminDashboard() {
   });
   const router = useRouter();
 
+  // Fonction pour corriger les chemins d'images
+  const getImageUrl = (imageUrl: string) => {
+    if (!imageUrl) return '';
+    
+    // Si c'est une URL complète (http/https), la retourner telle quelle
+    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+      return imageUrl;
+    }
+    
+    // Si c'est un chemin relatif commençant par "public/", le corriger
+    if (imageUrl.startsWith('public/')) {
+      return imageUrl.replace('public/', '/');
+    }
+    
+    // Si c'est un chemin relatif sans "public/", ajouter "/"
+    if (!imageUrl.startsWith('/')) {
+      return `/${imageUrl}`;
+    }
+    
+    return imageUrl;
+  };
+
   useEffect(() => {
     // Vérifier si l'utilisateur est connecté
     const token = localStorage.getItem('adminToken');
@@ -92,7 +114,7 @@ export default function AdminDashboard() {
       if (response.ok) {
         const data = await response.json();
         console.log('Projets admin reçus:', data); // Debug
-        setProjects(data);
+        setProjects(data.data || []); // Utiliser data.data au lieu de data
       } else {
         setError('Erreur lors du chargement des projets');
       }
@@ -297,7 +319,7 @@ export default function AdminDashboard() {
                         <TableCell>
                           {project.imageUrl ? (
                             <img 
-                              src={project.imageUrl} 
+                              src={getImageUrl(project.imageUrl)} 
                               alt={project.name}
                               style={{ 
                                 width: '50px', 
