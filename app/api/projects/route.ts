@@ -1,90 +1,93 @@
 import { prisma } from '@/lib/prisma'
-import jwt from 'jsonwebtoken'
 import { NextRequest, NextResponse } from 'next/server'
 
-// Fonction pour vérifier le token JWT
-function verifyToken(request: NextRequest) {
-  const authHeader = request.headers.get('authorization')
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return null
-  }
-
-  const token = authHeader.substring(7)
-  try {
-    return jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key')
-  } catch (error) {
-    return null
-  }
-}
-
-// GET /api/projects - Obtenir tous les projects (accès public)
-export async function GET(request: NextRequest)
+// GET /api/projects - Obtenir tous les projects
+export async function GET()
 {
 	try
 	{
 		const projects = await prisma.project.findMany({
 			orderBy:
 			{
-				id: 'desc'
+				id: 'asc'
 			}
 		})
 		
-		// Retourner directement le tableau pour le dashboard admin et la page d'accueil
-		return NextResponse.json(projects)
+		return NextResponse.json({
+			success: true,
+			data: projects,
+			message: `${projects.length} project(s) trouvé(s)`
+		})
 	}
 	catch (error)
 	{
 		console.error('Erreur lors de la récupération des projects:', error)
 		return NextResponse.json(
-			{ message: 'Erreur lors de la récupération des projects' },
-			{ status: 500 }
+			{
+				success: false,
+				error: 'Erreur lors de la récupération des projects'
+			},
+			{
+				status: 500
+			}
 		)
 	}
 }
 
-// POST /api/projects - Ajouter un nouveau project (authentification requise)
+// POST /api/projects - Ajouter un nouveau project
 export async function POST(request: NextRequest)
 {
 	try
 	{
-		// Vérifier l'authentification
-		const user = verifyToken(request)
-		if (!user) {
-			return NextResponse.json(
-				{ message: 'Non autorisé' },
-				{ status: 401 }
-			)
-		}
-
 		const body = await request.json()
 		const { name, description, technologies, status, url, imageUrl } = body
 
 		// Validation des données
 		if (!name || typeof name !== 'string' || name.trim().length === 0) {
 			return NextResponse.json(
-				{ message: 'Le nom du project est requis et doit être une chaîne non vide' },
-				{ status: 400 }
+				{
+					success: false,
+					error: 'Le nom du project est requis et doit être une chaîne non vide'
+				},
+				{
+					status: 400
+				}
 			)
 		}
 
 		if (!description || typeof description !== 'string' || description.trim().length === 0) {
 			return NextResponse.json(
-				{ message: 'La description du project est requise' },
-				{ status: 400 }
+				{
+					success: false,
+					error: 'La description du project est requise'
+				},
+				{
+					status: 400
+				}
 			)
 		}
 
 		if (!technologies || typeof technologies !== 'string' || technologies.trim().length === 0) {
 			return NextResponse.json(
-				{ message: 'Les technologies du project sont requises' },
-				{ status: 400 }
+				{
+					success: false,
+					error: 'Les technologies du project sont requises'
+				},
+				{
+					status: 400
+				}
 			)
 		}
 
 		if (!status || typeof status !== 'string' || status.trim().length === 0) {
 			return NextResponse.json(
-				{ message: 'Le statut du project est requis' },
-				{ status: 400 }
+				{
+					success: false,
+					error: 'Le statut du project est requis'
+				},
+				{
+					status: 400
+				}
 			)
 		}
 
@@ -97,18 +100,32 @@ export async function POST(request: NextRequest)
 				technologies: technologies.trim(),
 				status: status.trim(),
 				url: url || '',
-				imageUrl: imageUrl || null
+				imageUrl: imageUrl || ''
 			}
 		})
 
-		return NextResponse.json(project, { status: 201 })
+		return NextResponse.json(
+			{
+				success: true,
+				data: project,
+				message: 'Project créé avec succès'
+			},
+			{
+				status: 201
+			}
+		)
 	}
 	catch (error)
 	{
 		console.error('Erreur lors de la création du project:', error)
 		return NextResponse.json(
-			{ message: 'Erreur lors de la création du project' },
-			{ status: 500 }
+			{
+				success: false,
+				error: 'Erreur lors de la création du project'
+			},
+			{
+				status: 500
+			}
 		)
 	}
 }

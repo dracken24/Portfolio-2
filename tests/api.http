@@ -2,131 +2,160 @@
 @baseUrl = http://localhost:3000
 @contentType = application/json
 
-### 1. GET - Obtenir tous les produits (liste vide au début)
+### 1. GET - Obtenir tous les projets (liste vide au début)
 GET {{baseUrl}}/api/projects
 
-### 2. POST - Ajouter le premier produit
-POST {{baseUrl}}/api/products
+### 2. POST - Ajouter le premier projet
+POST {{baseUrl}}/api/projects
 Content-Type: {{contentType}}
 
 {
-  "name": "MacBook Air M2",
-  "price": 1299.99
+    "name": "Test 1",
+    "description": "Premier Projet Test",
+    "technologies": "api",
+    "status": "en cours",
+    "url": "https://www.google.com/"
 }
 
-### 3. POST - Ajouter un deuxième produit
-POST {{baseUrl}}/api/products
+### 3. POST - Ajouter un deuxième projet
+POST {{baseUrl}}/api/projects
 Content-Type: {{contentType}}
 
 {
-  "name": "iPad Pro 12.9",
-  "price": 899.99
+    "name": "Test 2",
+    "description": "Deuxieme Projet Test, plus un PNG",
+    "technologies": "api",
+    "status": "Fini",
+    "url": "https://www.google.com/",
+	"imageUrl": "https://cookingperfected.com/wp-content/uploads/2020/05/Chip-Butty.jpg"
 }
 
-### 4. POST - Ajouter un troisième produit
-POST {{baseUrl}}/api/products
+### 4. POST - Ajouter un troisième projet
+POST {{baseUrl}}/api/projects
 Content-Type: {{contentType}}
 
 {
-  "name": "AirPods Pro",
-  "price": 279.99
+    "name": "Test 3",
+    "description": "Troisième Projet Test",
+    "technologies": "api",
+    "status": "Fini",
+    "url": "https://www.google.com/"
 }
 
-### 5. GET - Vérifier que tous les produits sont listés
-GET {{baseUrl}}/api/products
+### 5. GET - Vérifier que tous les projet sont listés
+GET {{baseUrl}}/api/projects
 
-### 6. GET - Obtenir un produit par ID (bonus)
-GET {{baseUrl}}/api/products/1
+### 6. GET - Obtenir un projet par ID (bonus)
+GET {{baseUrl}}/api/projects/1
 
-### 7. PUT - Modifier le premier produit
-PUT {{baseUrl}}/api/products/1
+### 7. PUT - Modifier le premier projet
+PUT {{baseUrl}}/api/projects/1
 Content-Type: {{contentType}}
 
 {
-  "name": "MacBook Air M2 - Edition Spéciale",
-  "price": 1399.99
+    "name": "Test 1",
+    "description": "Premier Projet Test",
+    "technologies": "api",
+    "status": "en cours",
+    "url": "https://www.google.com/",
+	"imageUrl": "https://www.snickerscanada.ca/sites/g/files/fnmzdf1091/files/migrate-product-files/ubpa3bopktloamguher5.png"
 }
 
-### 8. GET - Vérifier que le produit a été modifié
-GET {{baseUrl}}/api/products/1
+### 8. GET - Vérifier que le projet a été modifié
+GET {{baseUrl}}/api/projects/1
 
-### 9. DELETE - Supprimer le produit avec ID 2
-DELETE {{baseUrl}}/api/products/2
+### 9. DELETE - Supprimer le projet avec ID 2
+DELETE {{baseUrl}}/api/projects/2
 
-### 10. GET - Vérifier que le produit a été supprimé
-GET {{baseUrl}}/api/products
+### 10. GET - Vérifier que le projet a été supprimé
+GET {{baseUrl}}/api/projects
 
-### 11. DELETE - Supprimer le produit avec ID 1
-DELETE {{baseUrl}}/api/products/1
+### 11. DELETE - Supprimer le projet avec ID 1
+DELETE {{baseUrl}}/api/projects/1
 
-### 12. DELETE - Supprimer le produit avec ID 3
-DELETE {{baseUrl}}/api/products/3
+### 12. DELETE - Supprimer le projet avec ID 3
+DELETE {{baseUrl}}/api/projects/3
 
 ### 13. GET - Vérifier que la liste est vide
-GET {{baseUrl}}/api/products
+GET {{baseUrl}}/api/projects
 
 ###
 ### TESTS D'ERREURS
 ###
 
 ### Erreur 1 - POST sans nom
-POST {{baseUrl}}/api/products
+POST {{baseUrl}}/api/projects
 Content-Type: {{contentType}}
 
 {
-  "price": 999.99
+    "description": "Premier Projet Test",
+    "technologies": "api",
+    "status": "en cours",
+    "url": "https://www.google.com/"
 }
 
-### Erreur 2 - POST avec prix négatif
-POST {{baseUrl}}/api/products
+### Erreur 2 - POST avec nom vide
+POST {{baseUrl}}/api/projects
 Content-Type: {{contentType}}
 
 {
-  "name": "Produit test",
-  "price": -50
+    "name": "",
+    "description": "Premier Projet Test",
+    "technologies": "api",
+    "status": "en cours",
+    "url": "https://www.google.com/"
 }
 
-### Erreur 3 - POST avec nom vide
-POST {{baseUrl}}/api/products
+### Erreur 3 - POST sans description ou description vide
+POST {{baseUrl}}/api/projects
 Content-Type: {{contentType}}
 
 {
-  "name": "",
-  "price": 199.99
+    "name": "Test 1",
+    "technologies": "api",
+    "status": "en cours",
+    "url": "https://www.google.com/"
 }
 
-### Erreur 4 - DELETE avec ID inexistant
-DELETE {{baseUrl}}/api/products/999
-
-### Erreur 5 - DELETE avec ID invalide
-DELETE {{baseUrl}}/api/products/abc
-
-### Erreur 6 - GET avec ID inexistant
-GET {{baseUrl}}/api/products/999
-
-### Erreur 7 - PUT avec ID inexistant
-PUT {{baseUrl}}/api/products/999
+### Erreur 4 - POST sans status ou status vide
+POST {{baseUrl}}/api/projects
 Content-Type: {{contentType}}
 
 {
-  "name": "Produit inexistant",
-  "price": 199.99
+    "name": "Test 1",
+	"description": "Premier Projet Test",
+    "technologies": "api",
+    "url": "https://www.google.com/"
 }
 
-### Erreur 8 - PUT avec nom vide
-PUT {{baseUrl}}/api/products/1
+### Erreur 5 - POST sans technologies ou technologies vide
+POST {{baseUrl}}/api/projects
 Content-Type: {{contentType}}
 
 {
-  "name": "",
-  "price": 299.99
+    "name": "Test 1",
+	"description": "Premier Projet Test",
+    "status": "en cours",
+    "url": "https://www.google.com/"
 }
 
-### Erreur 9 - PUT avec prix négatif
-PUT {{baseUrl}}/api/products/1
+### Erreur 6 - DELETE avec ID inexistant
+DELETE {{baseUrl}}/api/projects/999
+
+### Erreur 7 - DELETE avec ID invalide
+DELETE {{baseUrl}}/api/projects/abc
+
+### Erreur 8 - GET avec ID inexistant
+GET {{baseUrl}}/api/projects/999
+
+### Erreur 9 - PUT avec ID inexistant
+PUT {{baseUrl}}/api/projects/999
 Content-Type: {{contentType}}
 
 {
-  "name": "Produit test",
-  "price": -50
+    "name": "Test 2",
+    "description": "Premier Projet Test",
+    "technologies": "api",
+    "status": "Fini",
+    "url": "https://www.google.com/"
 }

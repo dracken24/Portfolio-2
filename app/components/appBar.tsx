@@ -9,54 +9,49 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Link from "next/link";
+import { useState } from "react";
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from "react";
-
+import { useTheme } from '../contexts/ThemeContext';
 import LoginModal from './LoginModal';
+
 import './components.css';
 
-export default function AppBarComponent()
-{
-	const [darkMode, setDarkMode] = useState(false);
+export default function AppBarComponent() {
+	const { isDarkMode, toggleTheme } = useTheme();
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const [loginModalOpen, setLoginModalOpen] = useState(false);
 	const open = Boolean(anchorEl);
 	const router = useRouter();
 
-	// Appliquer le thème sombre au body
-	useEffect(() =>
-	{
-		if (darkMode)
-		{
-			document.body.classList.add('dark-mode');
-		}
-		else
-		{
-			document.body.classList.remove('dark-mode');
-		}
-	}, [darkMode]);
-
-	const handleMenuClick = (event: React.MouseEvent<HTMLElement>) =>
-	{
+	const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorEl(event.currentTarget);
 	};
 
-	const handleMenuClose = () =>
-	{
+	const handleMenuClose = () => {
 		setAnchorEl(null);
 	};
-	
-	const handleDarkModeToggle = () =>
-	{
-		setDarkMode(!darkMode);
-	};
-	
-	const handleLinkClick = (link: string) =>
-	{
-		router.push(link);
-	};
 
+	const handleMenuItemClick = (action: string) => {
+		switch(action) {
+		case 'Accueil':
+			router.push('/');
+			break;
+		case 'Projets':
+			router.push('/projets');
+			break;
+		case 'À propos':
+			router.push('/a-propos');
+			break;
+		case 'Contact':
+			router.push('/contact');
+			break;
+		case 'Admin':
+			router.push('/admin');
+			break;
+		}
+		handleMenuClose();
+	};
+	
 	const handleAdminClick = () =>
 	{
 		handleMenuClose();
@@ -65,13 +60,11 @@ export default function AppBarComponent()
 
 	return (
 		<>
-			<AppBar className={`my-app-bar ${darkMode ? 'dark-mode' : ''}`} position="fixed">
+			<AppBar position="static">
 				<Toolbar>
-
-					<Typography variant="h6" className="my-typography" color="black">
-						<Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>Portfolio</Link>
+					<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+						Portfolio
 					</Typography>
-
 					<IconButton 
 						edge="start" 
 						color="inherit" 
@@ -89,26 +82,22 @@ export default function AppBarComponent()
 						open={open}
 						onClose={handleMenuClose}
 					>
-						<MenuItem onClick={() => handleLinkClick('/')}>Accueil</MenuItem>
-						<MenuItem onClick={() => handleLinkClick('/projets')}>Projets</MenuItem>
-						<MenuItem onClick={() => handleLinkClick('/a-propos')}>À propos</MenuItem>
-						<MenuItem onClick={() => handleLinkClick('/contact')}>Contact</MenuItem>
+						<MenuItem onClick={() => handleMenuItemClick('Accueil')}>Accueil</MenuItem>
+						<MenuItem onClick={() => handleMenuItemClick('Projets')}>Projets</MenuItem>
+						<MenuItem onClick={() => handleMenuItemClick('À propos')}>À propos</MenuItem>
+						<MenuItem onClick={() => handleMenuItemClick('Contact')}>Contact</MenuItem>
 						<MenuItem onClick={handleAdminClick}>Admin</MenuItem>
 					</Menu>
 					<IconButton 
 						edge="end" 
 						color="inherit" 
 						aria-label="dark mode toggle" 
-						onClick={handleDarkModeToggle}
-						style={{
-							color: darkMode ? '#ffffff' : '#ffffff'  // Blanc dans les deux modes
-						}}
+						onClick={toggleTheme}
 					> 
-						{darkMode ? <LightModeIcon /> : <DarkModeIcon />}
+						{isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
 					</IconButton>
 				</Toolbar>
 			</AppBar>
-			
 			<LoginModal 
 				open={loginModalOpen} 
 				onClose={() => setLoginModalOpen(false)} 
