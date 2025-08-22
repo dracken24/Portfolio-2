@@ -13,6 +13,7 @@ import { useState } from "react";
 import { useRouter } from 'next/navigation';
 import { useTheme } from '../contexts/ThemeContext';
 import LoginModal from './LoginModal';
+import HomeIcon from '@mui/icons-material/Home';
 
 import './components.css';
 
@@ -57,11 +58,25 @@ export default function AppBarComponent() {
 		handleMenuClose();
 		setLoginModalOpen(true);
 	};
+	
+	const handleHomeClick = () => {
+		router.push('/');
+	};
 
 	return (
 		<>
 			<AppBar position="static">
 				<Toolbar>
+					<IconButton 
+						edge="start" 
+						color="inherit" 
+						aria-label="accueil"
+						onClick={handleHomeClick}
+						sx={{ mr: 1 }}
+					>
+						<HomeIcon />
+					</IconButton>
+					
 					<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
 						Portfolio
 					</Typography>

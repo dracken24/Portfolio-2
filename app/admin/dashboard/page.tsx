@@ -25,8 +25,9 @@ import {
 	Toolbar,
 	Typography
 } from '@mui/material';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 interface Project {
   id: number;
@@ -78,18 +79,7 @@ export default function AdminDashboard() {
     return imageUrl;
   };
 
-  useEffect(() => {
-    // Vérifier si l'utilisateur est connecté
-    const token = localStorage.getItem('adminToken');
-    if (!token) {
-      router.push('/');
-      return;
-    }
-
-    fetchProjects();
-  }, [router]);
-
-  const fetchProjects = async () => {
+  const fetchProjects = useCallback(async () => {
     try {
       const token = localStorage.getItem('adminToken');
       if (!token) {
@@ -123,7 +113,20 @@ export default function AdminDashboard() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [router, setProjects, setError, setLoading]);
+
+  useEffect(() => {
+    // Vérifier si l'utilisateur est connecté
+    const token = localStorage.getItem('adminToken');
+    if (!token) {
+      router.push('/');
+      return;
+    }
+
+    fetchProjects();
+  }, [fetchProjects]);
+
+
 
   const handleLogout = () => {
     localStorage.removeItem('adminToken');
@@ -318,12 +321,12 @@ export default function AdminDashboard() {
                         </TableCell>
                         <TableCell>
                           {project.imageUrl ? (
-                            <img 
+                            <Image 
                               src={getImageUrl(project.imageUrl)} 
                               alt={project.name}
+                              width={50}
+                              height={50}
                               style={{ 
-                                width: '50px', 
-                                height: '50px', 
                                 objectFit: 'cover',
                                 borderRadius: '4px'
                               }}

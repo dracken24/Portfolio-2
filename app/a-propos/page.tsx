@@ -1,16 +1,15 @@
 'use client'
 
-import AppBarComponent from '../components/appBar'
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents'
+import PersonIcon from '@mui/icons-material/Person'
+import PsychologyIcon from '@mui/icons-material/Psychology'
+import SchoolIcon from '@mui/icons-material/School'
+import WorkIcon from '@mui/icons-material/Work'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import { styled } from '@mui/material/styles'
-import PersonIcon from '@mui/icons-material/Person'
-import SchoolIcon from '@mui/icons-material/School'
-import WorkIcon from '@mui/icons-material/Work'
-import CodeIcon from '@mui/icons-material/Code'
-import PsychologyIcon from '@mui/icons-material/Psychology'
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents'
+import AppBarComponent from '../components/appBar'
 
 const HeaderSection = styled(Box)(({ theme }) => ({
   background: theme.palette.mode === 'dark' 
@@ -127,7 +126,7 @@ export default function APropos() {
               Qui suis-je ?
             </Typography>
             <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-              Développeur passionné par la création d'applications web modernes et innovantes.
+              Développeur passionné par la création d&apos;applications web modernes et innovantes.
             </Typography>
             <Box>
               <SkillTag>React</SkillTag>
@@ -158,7 +157,7 @@ export default function APropos() {
               Expérience
             </Typography>
             <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-              Aucune années d'expérience dans le développement d'applications.
+              Aucune années d&apos;expérience dans le développement d&apos;applications.
             </Typography>
             <Box>
               <SkillTag>Full Stack</SkillTag>
@@ -189,7 +188,7 @@ export default function APropos() {
             Prêt à collaborer sur votre prochain projet ?
           </Typography>
           <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
-            N'hésitez pas à me contacter pour discuter de vos idées et voir comment nous pouvons travailler ensemble.
+            N&apos;hésitez pas à me contacter pour discuter de vos idées et voir comment nous pouvons travailler ensemble.
           </Typography>
         </Box>
       </Container>

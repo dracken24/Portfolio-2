@@ -21,6 +21,7 @@ import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import { useEffect, useState } from 'react'
 import AppBarComponent from '../components/appBar'
+import Image from 'next/image'
 
 interface Project {
   id: number
@@ -493,12 +494,12 @@ export default function Projets() {
                 
                 {project.imageUrl && (
                   <Box sx={{ mb: 3, textAlign: 'center' }}>
-                    <img 
+                    <Image 
                       src={getImageUrl(project.imageUrl)} 
                       alt={project.name}
+                      width={400}
+                      height={300}
                       style={{ 
-                        width: '400px',
-                        height: '300px',
                         objectFit: 'cover',
                         borderRadius: '12px',
                         boxShadow: '0 4px 12px rgba(0,0,0,0.15)'

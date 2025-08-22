@@ -1,15 +1,14 @@
 'use client'
 
-import AppBarComponent from './components/appBar'
+import CodeIcon from '@mui/icons-material/Code'
+import ContactSupportIcon from '@mui/icons-material/ContactSupport'
+import PersonIcon from '@mui/icons-material/Person'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import { styled } from '@mui/material/styles'
-import HomeIcon from '@mui/icons-material/Home'
-import CodeIcon from '@mui/icons-material/Code'
-import PersonIcon from '@mui/icons-material/Person'
-import ContactSupportIcon from '@mui/icons-material/ContactSupport'
 import { useRouter } from 'next/navigation'
+import AppBarComponent from './components/appBar'
 
 const HeaderSection = styled(Box)(({ theme }) => ({
   background: theme.palette.mode === 'dark' 
@@ -147,7 +146,7 @@ export default function Home() {
             Bienvenue sur mon portfolio
           </Typography>
           <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
-            Explorez mes projets, découvrez mon parcours et n'hésitez pas à me contacter pour collaborer sur vos idées.
+            Explorez mes projets, découvrez mon parcours et n&apos;hésitez pas à me contacter pour collaborer sur vos idées.
           </Typography>
         </Box>
       </Container>
