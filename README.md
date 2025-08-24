@@ -8,16 +8,14 @@ Portfolio web moderne développé avec Next.js 14, Material-UI, TypeScript et Pr
 - Jean-François LEFEBVRE,
 - Natacha MEYER
 
+[Lien sur Vercel](https://portfolio-2-khaki-chi.vercel.app/)
+
 ## Description du projet et du domaine métier choisi
 
 On a décidé de faire un portfolio de projets. Ceci étant dit, ce n'est pas un portfolio officiel. C'était développé avec l'intention de créer un bon portfolio qui peut être utilisé comme un modèle de base.
 
 **Repositories:**
-[Ijipop/portfolio](https://github.com/Ijipop/portfolio.git)
-<!--
-ancienne version:
-~~[dracken24/Portfolio-2](https://github.com/dracken24/Portfolio-2)~~
--->
+[dracken24/Portfolio-2](https://github.com/dracken24/Portfolio-2)
 
 ## Instructions d'installation et de configuration
 
