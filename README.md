@@ -126,5 +126,5 @@ On peut supprimer un projet en cliquant sur le bouton avec la poubelle. Un pop-u
 
 Pour plus informations:
 
-- Documentation des services ([fichier SERVICES.md](https://github.com/Ijipop/portfolio/blob/a32ed38faf62ae525a3cd6de8027445a5aa76a77/SERVICES.md))
-- Analyse du code ([fichier CODE_ANALYSIS.md](https://github.com/Ijipop/portfolio/blob/7534eb129791fc8de2c82600f6670bcb9f783ad9/CODE_ANALYSIS.md))
+- Documentation des services ([fichier SERVICES.md](https://github.com/dracken24/Portfolio-2/blob/master/documentation/SERVICES.md))
+- Analyse du code ([fichier CODE_ANALYSIS.md](https://github.com/dracken24/Portfolio-2/blob/master/documentation/CODE_ANALYSIS.md))
