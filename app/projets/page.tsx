@@ -288,21 +288,28 @@ export default function Projets() {
   }
 
   // Fonction pour corriger les chemins d'images
-  const getImageUrl = (imageUrl: string) => {
-    if (!imageUrl) return '';
+  const getImageUrl = (imageUrl: string) =>
+  {
+    if (!imageUrl)
+	{
+		return '';
+	}
     
     // Si c'est une URL complète (http/https), la retourner telle quelle
-    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://'))
+	{
       return imageUrl;
     }
     
     // Si c'est un chemin relatif commençant par "public/", le corriger
-    if (imageUrl.startsWith('public/')) {
+    if (imageUrl.startsWith('public/'))
+	{
       return imageUrl.replace('public/', '/');
     }
     
     // Si c'est un chemin relatif sans "public/", ajouter "/"
-    if (!imageUrl.startsWith('/')) {
+    if (!imageUrl.startsWith('/'))
+	{
       return `/${imageUrl}`;
     }
     
@@ -478,7 +485,7 @@ export default function Projets() {
                   />
                 </Box>
                 
-                                 <Typography 
+                <Typography 
                    variant="h5" 
                    component="h2" 
                    gutterBottom
