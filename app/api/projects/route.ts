@@ -140,3 +140,15 @@ export async function POST(request: NextRequest)
 		)
 	}
 }
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    serverComponentsExternalPackages: ['@prisma/client']
+  },
+  images: {
+    unoptimized: true
+  }
+}
+
+module.exports = nextConfig
