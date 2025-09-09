@@ -100,7 +100,7 @@ export async function PUT(request: NextRequest,{ params }: { params: { id: strin
 		}
 
 		const body = await request.json()
-		const { name, description, technologies, status, url, imageUrl } = body
+		const { name, description, technologies, status, cathegory, url, imageUrl } = body
 
 		// Validation des données
 		if (!name || typeof name !== 'string' || name.trim().length === 0)
@@ -152,6 +152,18 @@ export async function PUT(request: NextRequest,{ params }: { params: { id: strin
 			)
 		}
 
+		if (!cathegory || typeof cathegory !== 'string' || cathegory.trim().length === 0) {
+			return NextResponse.json(
+				{
+					success: false,
+					error: 'La catégorie du projet est requise'
+				},
+				{
+					status: 400
+				}
+			)
+		}
+
 		// Mettre à jour le project
 		const updatedProject = await prisma.project.update({
 			where: { id },
@@ -161,6 +173,7 @@ export async function PUT(request: NextRequest,{ params }: { params: { id: strin
 				description: description.trim(),
 				technologies: technologies.trim(),
 				status: status.trim(),
+				cathegory: cathegory.trim(),
 				url: url || '',
 				imageUrl: imageUrl || ''
 			}

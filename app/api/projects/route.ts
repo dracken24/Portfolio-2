@@ -51,7 +51,7 @@ export async function POST(request: NextRequest)
 	try
 	{
 		const body = await request.json()
-		const { name, description, technologies, status, url, imageUrl } = body
+		const { name, description, technologies, status, cathegory, url, imageUrl } = body
 
 		// Validation des données
 		if (!name || typeof name !== 'string' || name.trim().length === 0) {
@@ -102,6 +102,18 @@ export async function POST(request: NextRequest)
 			)
 		}
 
+		if (!cathegory || typeof cathegory !== 'string' || cathegory.trim().length === 0) {
+			return NextResponse.json(
+				{
+					success: false,
+					error: 'La catégorie du projet est requise'
+				},
+				{
+					status: 400
+				}
+			)
+		}
+
 		// Créer le project
 		const project = await prisma.project.create({
 			data:
@@ -110,6 +122,7 @@ export async function POST(request: NextRequest)
 				description: description.trim(),
 				technologies: technologies.trim(),
 				status: status.trim(),
+				cathegory: cathegory.trim(),
 				url: url || '',
 				imageUrl: imageUrl || ''
 			}
