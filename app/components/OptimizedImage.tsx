@@ -23,30 +23,30 @@ export default function OptimizedImage({
   const isExternalUrl = src.startsWith('http://') || src.startsWith('https://')
   
   if (isExternalUrl) {
-    // Pour les images externes, utiliser une balise img normale
-    return (
-      <img 
-        src={src} 
-        alt={alt}
-        style={{ 
-          width: `${width}px`,
-          height: `${height}px`,
-          ...style
-        }}
-        className={className}
-      />
-    )
+	// Pour les images externes, utiliser une balise img normale
+	return (
+	  <img 
+		src={src} 
+		alt={alt}
+		style={{ 
+		  width: `${width}px`,
+		  height: `${height}px`,
+		  ...style
+		}}
+		className={className}
+	  />
+	)
   }
   
   // Pour les images locales, utiliser le composant Image optimisé de Next.js
   return (
-    <Image 
-      src={src} 
-      alt={alt}
-      width={width}
-      height={height}
-      style={style}
-      className={className}
-    />
+	<Image 
+	  src={src} 
+	  alt={alt}
+	  width={width}
+	  height={height}
+	  style={style}
+	  className={className}
+	/>
   )
 }

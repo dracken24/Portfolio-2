@@ -110,6 +110,11 @@ Et grâce au Navbar, on peut naviguer d'une page à l'autre avec ces sélections
 
 ### Admin
 
+connexion:
+
+email: admin@portfolio.com 
+password: admin123
+
 Seulement accessible aux admins
 ![picture](https://github.com/Ijipop/portfolio/blob/Ji/public/imgs/readme/admin_connect.png)
 Les admins peuvent ajouter , supprimer et modifier les projets ici.

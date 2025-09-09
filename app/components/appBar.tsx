@@ -24,31 +24,35 @@ export default function AppBarComponent() {
 	const open = Boolean(anchorEl);
 	const router = useRouter();
 
-	const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+	const handleMenuClick = (event: React.MouseEvent<HTMLElement>) =>
+	{
 		setAnchorEl(event.currentTarget);
 	};
 
-	const handleMenuClose = () => {
+	const handleMenuClose = () =>
+	{
 		setAnchorEl(null);
 	};
 
-	const handleMenuItemClick = (action: string) => {
-		switch(action) {
-		case 'Accueil':
-			router.push('/');
-			break;
-		case 'Projets':
-			router.push('/projets');
-			break;
-		case 'À propos':
-			router.push('/a-propos');
-			break;
-		case 'Contact':
-			router.push('/contact');
-			break;
-		case 'Admin':
-			router.push('/admin');
-			break;
+	const handleMenuItemClick = (action: string) =>
+	{
+		switch(action)
+		{
+			case 'Accueil':
+				router.push('/');
+				break;
+			case 'Projets':
+				router.push('/projets');
+				break;
+			case 'À propos':
+				router.push('/a-propos');
+				break;
+			case 'Contact':
+				router.push('/contact');
+				break;
+			case 'Admin':
+				router.push('/admin');
+				break;
 		}
 		handleMenuClose();
 	};
@@ -59,7 +63,8 @@ export default function AppBarComponent() {
 		setLoginModalOpen(true);
 	};
 	
-	const handleHomeClick = () => {
+	const handleHomeClick = () =>
+	{
 		router.push('/');
 	};
 
