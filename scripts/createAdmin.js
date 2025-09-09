@@ -20,14 +20,14 @@ async function createAdminUser()
 		}
 
 		// Hasher le mot de passe
-		const hashedPassword = await bcrypt.hash('admin123', 10);
+		const hashedPassword = await bcrypt.hash('Parabatai24.', 10);
  
 		// Créer l'utilisateur admin
 		const adminUser = await prisma.user.create(
 		{
 			data: 
 			{
-				email: 'admin@portfolio.com', // admin@portfolio.com default email
+				email: 'dracken24@gmail.com', // admin@portfolio.com default email
 				password: hashedPassword, // admin123 default password
 				name: 'Administrateur',
 				role: 'admin',
