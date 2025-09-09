@@ -173,7 +173,6 @@ export async function PUT(request: NextRequest,{ params }: { params: { id: strin
 				description: description.trim(),
 				technologies: technologies.trim(),
 				status: status.trim(),
-				cathegory: cathegory.trim(),
 				url: url || '',
 				imageUrl: imageUrl || ''
 			}

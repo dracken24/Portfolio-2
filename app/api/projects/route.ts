@@ -122,7 +122,6 @@ export async function POST(request: NextRequest)
 				description: description.trim(),
 				technologies: technologies.trim(),
 				status: status.trim(),
-				cathegory: cathegory.trim(),
 				url: url || '',
 				imageUrl: imageUrl || ''
 			}
@@ -153,15 +152,3 @@ export async function POST(request: NextRequest)
 		)
 	}
 }
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: ['@prisma/client']
-  },
-  images: {
-    unoptimized: true
-  }
-}
-
-module.exports = nextConfig
