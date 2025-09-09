@@ -114,7 +114,7 @@ export async function POST(request: NextRequest)
 				imageUrl: imageUrl || ''
 			}
 		})
-
+ 
 		return NextResponse.json(
 			{
 				success: true,
