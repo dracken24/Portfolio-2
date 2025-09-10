@@ -1,11 +1,21 @@
-import { prisma } from '@/lib/prisma'
-import { NextRequest, NextResponse } from 'next/server'
+import { verifyAdminAuth } from '@/lib/auth';
+import { prisma } from '@/lib/prisma';
+import { NextRequest, NextResponse } from 'next/server';
 
 // DELETE /api/projects/[id] - Supprimer un project par ID
 export async function DELETE(request: NextRequest, { params }: { params: { id: string } })
 {
 	try
 	{
+		// Vérifier l'authentification admin
+		const user = verifyAdminAuth(request);
+		if (!user) {
+			return NextResponse.json(
+				{ success: false, error: 'Non autorisé' },
+				{ status: 401 }
+			);
+		}
+
 		const id = parseInt(params.id)
 
 		// Validation de l'ID
@@ -67,6 +77,15 @@ export async function PUT(request: NextRequest,{ params }: { params: { id: strin
 {
 	try
 	{
+		// Vérifier l'authentification admin
+		const user = verifyAdminAuth(request);
+		if (!user) {
+			return NextResponse.json(
+				{ success: false, error: 'Non autorisé' },
+				{ status: 401 }
+			);
+		}
+
 		const id = parseInt(params.id)
 
 		// Validation de l'ID
@@ -100,7 +119,7 @@ export async function PUT(request: NextRequest,{ params }: { params: { id: strin
 		}
 
 		const body = await request.json()
-		const { name, description, technologies, status, cathegory, url, imageUrl } = body
+		const { name, description, technologies, status, url, imageUrl, cathegory } = body
 
 		// Validation des données
 		if (!name || typeof name !== 'string' || name.trim().length === 0)
@@ -173,6 +192,7 @@ export async function PUT(request: NextRequest,{ params }: { params: { id: strin
 				description: description.trim(),
 				technologies: technologies.trim(),
 				status: status.trim(),
+				cathegory: cathegory.trim(),
 				url: url || '',
 				imageUrl: imageUrl || ''
 			}

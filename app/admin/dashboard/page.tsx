@@ -2,28 +2,28 @@
 
 import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon, Logout as LogoutIcon } from '@mui/icons-material';
 import {
-	Alert,
-	AppBar,
-	Box,
-	Button,
-	Card,
-	CardContent,
-	Container,
-	Dialog,
-	DialogActions,
-	DialogContent,
-	DialogTitle,
-	IconButton,
-	Paper,
-	Table,
-	TableBody,
-	TableCell,
-	TableContainer,
-	TableHead,
-	TableRow,
-	TextField,
-	Toolbar,
-	Typography
+    Alert,
+    AppBar,
+    Box,
+    Button,
+    Card,
+    CardContent,
+    Container,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    IconButton,
+    Paper,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    TextField,
+    Toolbar,
+    Typography
 } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
@@ -92,24 +92,12 @@ export default function AdminDashboard()
 	{
 		try
 		{
-			const token = localStorage.getItem('adminToken');
-			if (!token)
-			{
-				router.push('/');
-				return;
-			}
-
-			const response = await fetch('/api/projects', {
-				headers:
-				{
-					'Authorization': `Bearer ${token}`
-				}
-			});
+			// Le cookie est automatiquement envoyé avec la requête
+			const response = await fetch('/api/projects');
 
 			if (response.status === 401)
 			{
 				// Token invalide, rediriger vers la connexion
-				localStorage.removeItem('adminToken');
 				localStorage.removeItem('adminUser');
 				router.push('/');
 				return;
@@ -138,24 +126,32 @@ export default function AdminDashboard()
 
 	useEffect(() =>
 	{
-		// Vérifier si l'utilisateur est connecté
-		const token = localStorage.getItem('adminToken');
-		if (!token)
-		{
-			router.push('/');
-			return;
-		}
-
+		// Le middleware s'occupe de la vérification d'authentification
+		// On peut directement charger les projets
 		fetchProjects();
 	}, [fetchProjects]);
 
 
 
-	const handleLogout = () =>
+	const handleLogout = async () =>
 	{
-		localStorage.removeItem('adminToken');
-		localStorage.removeItem('adminUser');
-		router.push('/');
+		try
+		{
+			// Appeler l'API de déconnexion pour supprimer le cookie
+			await fetch('/api/auth/logout', {
+				method: 'POST'
+			});
+		}
+		catch (error)
+		{
+			console.error('Erreur lors de la déconnexion:', error);
+		}
+		finally
+		{
+			// Nettoyer le localStorage côté client
+			localStorage.removeItem('adminUser');
+			router.push('/');
+		}
 	};
 
 	const handleAddProject = () =>
@@ -197,27 +193,14 @@ export default function AdminDashboard()
 
 		try
 		{
-			const token = localStorage.getItem('adminToken');
-			if (!token)
-			{
-				router.push('/');
-				return;
-			}
-
 			const response = await fetch(`/api/projects/${id}`,{
-				method: 'DELETE',
-				headers:
-				{
-					'Authorization': `Bearer ${token}`
-				}
+				method: 'DELETE'
 			});
 
 			if (response.status === 401)
 			{
-				localStorage.removeItem('adminToken');
 				localStorage.removeItem('adminUser');
 				router.push('/');
-				
 				return;
 			}
 
@@ -242,33 +225,22 @@ export default function AdminDashboard()
 
 		try
 		{
-			const token = localStorage.getItem('adminToken');
-			if (!token)
-			{
-				router.push('/');
-				return;
-			}
-
 			const url = editingProject ? `/api/projects/${editingProject.id}` : '/api/projects';
-			
 			const method = editingProject ? 'PUT' : 'POST';
 
 			const response = await fetch(url,{
 				method,
 				headers:
 				{
-					'Content-Type': 'application/json',
-					'Authorization': `Bearer ${token}`
+					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify(formData)
 			});
 
 			if (response.status === 401)
 			{
-				localStorage.removeItem('adminToken');
 				localStorage.removeItem('adminUser');
 				router.push('/');
-				
 				return;
 			}
 

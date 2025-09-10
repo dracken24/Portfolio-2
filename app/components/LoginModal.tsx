@@ -1,6 +1,6 @@
 "use client";
 
-import{
+import {
 	Alert, Box, Button, Dialog,
 	DialogActions, DialogContent, DialogTitle,
 	TextField, Typography
@@ -43,8 +43,8 @@ export default function LoginModal({ open, onClose }: LoginModalProps)
 			if (response.ok)
 			{
 				const data = await response.json();
-				// Stocker le token dans localStorage
-				localStorage.setItem('adminToken', data.token);
+				// Le token est maintenant automatiquement stocké dans un cookie sécurisé
+				// On peut toujours stocker les infos utilisateur dans localStorage pour l'affichage
 				localStorage.setItem('adminUser', JSON.stringify(data.user));
 				
 				onClose();

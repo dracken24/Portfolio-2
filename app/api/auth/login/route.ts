@@ -58,11 +58,23 @@ export async function POST(request: NextRequest) {
       role: user.role
     };
 
-    return NextResponse.json({
+    // Créer la réponse avec le token dans un cookie sécurisé
+    const response = NextResponse.json({
       message: 'Connexion réussie',
       token,
       user: userResponse
     });
+
+    // Définir le cookie sécurisé
+    response.cookies.set('adminToken', token, {
+      httpOnly: true, // Empêche l'accès JavaScript côté client
+      secure: process.env.NODE_ENV === 'production', // HTTPS en production
+      sameSite: 'strict', // Protection CSRF
+      maxAge: 24 * 60 * 60, // 24 heures en secondes
+      path: '/'
+    });
+
+    return response;
 
   } catch (error) {
     console.error('Erreur de connexion:', error);

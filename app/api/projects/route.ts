@@ -1,3 +1,4 @@
+import { verifyAdminAuth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { staticProjects } from '@/lib/staticData'
 import { NextRequest, NextResponse } from 'next/server'
@@ -50,11 +51,21 @@ export async function POST(request: NextRequest)
 {
 	try
 	{
+		// Vérifier l'authentification admin
+		const user = verifyAdminAuth(request);
+		if (!user) {
+			return NextResponse.json(
+				{ success: false, error: 'Non autorisé' },
+				{ status: 401 }
+			);
+		}
+
 		const body = await request.json()
-		const { name, description, technologies, status, cathegory, url, imageUrl } = body
+		const { name, description, technologies, status, url, imageUrl, cathegory } = body
 
 		// Validation des données
-		if (!name || typeof name !== 'string' || name.trim().length === 0) {
+		if (!name || typeof name !== 'string' || name.trim().length === 0)
+		{
 			return NextResponse.json(
 				{
 					success: false,
@@ -122,6 +133,7 @@ export async function POST(request: NextRequest)
 				description: description.trim(),
 				technologies: technologies.trim(),
 				status: status.trim(),
+				cathegory: cathegory.trim(),
 				url: url || '',
 				imageUrl: imageUrl || ''
 			}
