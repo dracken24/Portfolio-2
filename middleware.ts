@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Fonction pour vérifier un JWT en utilisant l'API Web Crypto (compatible Edge Runtime)
+// Fonction pour vérifier un JWT
 async function verifyJWT(token: string, secret: string): Promise<any | null>
 {
 	try {

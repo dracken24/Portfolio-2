@@ -17,7 +17,8 @@ import HomeIcon from '@mui/icons-material/Home';
 
 import './components.css';
 
-export default function AppBarComponent() {
+export default function AppBarComponent()
+{
 	const { isDarkMode, toggleTheme } = useTheme();
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const [loginModalOpen, setLoginModalOpen] = useState(false);

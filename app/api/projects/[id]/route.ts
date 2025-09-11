@@ -9,7 +9,8 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
 	{
 		// Vérifier l'authentification admin
 		const user = verifyAdminAuth(request);
-		if (!user) {
+		if (!user)
+		{
 			return NextResponse.json(
 				{ success: false, error: 'Non autorisé' },
 				{ status: 401 }
@@ -79,7 +80,8 @@ export async function PUT(request: NextRequest,{ params }: { params: { id: strin
 	{
 		// Vérifier l'authentification admin
 		const user = verifyAdminAuth(request);
-		if (!user) {
+		if (!user)
+		{
 			return NextResponse.json(
 				{ success: false, error: 'Non autorisé' },
 				{ status: 401 }
@@ -135,7 +137,8 @@ export async function PUT(request: NextRequest,{ params }: { params: { id: strin
 			)
 		}
 
-		if (!description || typeof description !== 'string' || description.trim().length === 0) {
+		if (!description || typeof description !== 'string' || description.trim().length === 0)
+		{
 			return NextResponse.json(
 				{
 					success: false,
@@ -147,7 +150,8 @@ export async function PUT(request: NextRequest,{ params }: { params: { id: strin
 			)
 		}
 
-		if (!technologies || typeof technologies !== 'string' || technologies.trim().length === 0) {
+		if (!technologies || typeof technologies !== 'string' || technologies.trim().length === 0)
+		{
 			return NextResponse.json(
 				{
 					success: false,
@@ -159,7 +163,8 @@ export async function PUT(request: NextRequest,{ params }: { params: { id: strin
 			)
 		}
 
-		if (!status || typeof status !== 'string' || status.trim().length === 0) {
+		if (!status || typeof status !== 'string' || status.trim().length === 0)
+		{
 			return NextResponse.json(
 				{
 					success: false,
@@ -171,7 +176,8 @@ export async function PUT(request: NextRequest,{ params }: { params: { id: strin
 			)
 		}
 
-		if (!cathegory || typeof cathegory !== 'string' || cathegory.trim().length === 0) {
+		if (!cathegory || typeof cathegory !== 'string' || cathegory.trim().length === 0)
+		{
 			return NextResponse.json(
 				{
 					success: false,
@@ -184,7 +190,8 @@ export async function PUT(request: NextRequest,{ params }: { params: { id: strin
 		}
 
 		// Mettre à jour le project
-		const updatedProject = await prisma.project.update({
+		const updatedProject = await prisma.project.update(
+		{
 			where: { id },
 			data:
 			{
@@ -198,7 +205,8 @@ export async function PUT(request: NextRequest,{ params }: { params: { id: strin
 			}
 		})
 
-		return NextResponse.json({
+		return NextResponse.json(
+		{
 			success: true,
 			data: updatedProject,
 			message: 'Project modifié avec succès'
@@ -257,7 +265,8 @@ export async function GET(request: NextRequest,{ params }: { params: { id: strin
 			)
 		}
 
-		return NextResponse.json({
+		return NextResponse.json(
+		{
 			success: true,
 			data: project,
 			message: 'Project trouvé'

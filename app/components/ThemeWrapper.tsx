@@ -1,11 +1,8 @@
-'use client'
+'use client';
 
-import { CustomThemeProvider } from '../contexts/ThemeContext'
+import { CustomThemeProvider } from '../contexts/ThemeContext';
 
-export default function ThemeWrapper({ children }: { children: React.ReactNode }) {
-  return (
-    <CustomThemeProvider>
-      {children}
-    </CustomThemeProvider>
-  )
+export default function ThemeWrapper({ children }: { children: React.ReactNode })
+{
+    return <CustomThemeProvider>{children}</CustomThemeProvider>;
 }

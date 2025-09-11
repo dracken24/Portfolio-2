@@ -28,7 +28,8 @@ import {
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
-interface Project {
+interface Project
+{
 	id: number;
 	name: string;
 	description: string;
