@@ -131,7 +131,7 @@ export default function APropos() {
                             Après 10 ans d'ébénisterie, une blessure au dos en fin 2021 m'a poussée vers une
                             réorientation de carrière. Cette transition m'a menée vers l'école 42Québec pour apprendre
                             la programmation système en C/C++, puis vers le Collège Maisonneuve pour me spécialiser en
-                            développement web full stack. Aujourd'hui, je combine ma rigueur artisanale avec ma passion
+                            développement web full stack. Aujourd'hui, après pres de 4 ans de formation et d'expérience, je combine ma rigueur artisanale avec ma passion
                             pour le code.
                         </Typography>
                         <Box>
@@ -140,6 +140,7 @@ export default function APropos() {
                             <SkillTag>Next.js</SkillTag>
                             <SkillTag>TypeScript</SkillTag>
                             <SkillTag>Node.js</SkillTag>
+                            <SkillTag>SQL</SkillTag>
                         </Box>
                     </AboutCard>
 
@@ -149,9 +150,9 @@ export default function APropos() {
                             Formation
                         </Typography>
                         <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-                            <strong>42Québec</strong> : 1½ an de programmation système en C/C++
+                            <strong>42Québec</strong> : 1½ an de programmation backend style core system en C/C++
                             <br />
-                            <strong>Collège Maisonneuve</strong> : AEC Développement Full Stack Web
+                            <strong>Collège Maisonneuve</strong> : AEC Développement Full Stack orienté Web
                         </Typography>
                         <Box>
                             <SkillTag>Programmation Système</SkillTag>
