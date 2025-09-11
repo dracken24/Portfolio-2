@@ -50,7 +50,7 @@ export async function POST(request: NextRequest)
                 email: user.email,
                 role: user.role
             },
-            process.env.JWT_SECRET || 'your-secret-key',
+            process.env.JWT_SECRET || 'B0a9N8a7N6a5B4o3M2b',
             {
 				expiresIn: '24h'
 			}

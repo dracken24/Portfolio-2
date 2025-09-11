@@ -11,8 +11,7 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import AppBarComponent from '../components/appBar';
 
-const HeaderSection = styled(Box)(({ theme }) => (
-{
+const HeaderSection = styled(Box)(({ theme }) => ({
     background:
         theme.palette.mode === 'dark'
             ? 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)'
@@ -22,8 +21,7 @@ const HeaderSection = styled(Box)(({ theme }) => (
     textAlign: 'center',
     position: 'relative',
     overflow: 'hidden',
-    '&::before':
-	{
+    '&::before': {
         content: '""',
         position: 'absolute',
         top: 0,
@@ -38,8 +36,7 @@ const HeaderSection = styled(Box)(({ theme }) => (
     }
 }));
 
-const AboutCard = styled(Box)(({ theme }) => (
-{
+const AboutCard = styled(Box)(({ theme }) => ({
     background:
         theme.palette.mode === 'dark'
             ? 'linear-gradient(145deg, #1e1e1e 0%, #2d2d2d 100%)'
@@ -51,15 +48,13 @@ const AboutCard = styled(Box)(({ theme }) => (
     boxShadow: theme.palette.mode === 'dark' ? '0 8px 32px rgba(0,0,0,0.3)' : '0 8px 32px rgba(0,0,0,0.1)',
     transition: 'all 0.3s ease',
     height: '100%',
-    '&:hover':
-	{
+    '&:hover': {
         transform: 'translateY(-5px)',
         boxShadow: theme.palette.mode === 'dark' ? '0 20px 40px rgba(0,0,0,0.4)' : '0 20px 40px rgba(0,0,0,0.15)'
     }
 }));
 
-const SkillTag = styled(Box)(({ theme }) => (
-{
+const SkillTag = styled(Box)(({ theme }) => ({
     display: 'inline-block',
     background:
         theme.palette.mode === 'dark'
@@ -75,8 +70,7 @@ const SkillTag = styled(Box)(({ theme }) => (
         theme.palette.mode === 'dark' ? '0 2px 8px rgba(74, 144, 226, 0.3)' : '0 2px 8px rgba(240, 147, 251, 0.3)'
 }));
 
-export default function APropos()
-{
+export default function APropos() {
     return (
         <Box
             sx={{
@@ -114,7 +108,7 @@ export default function APropos()
                             mx: 'auto'
                         }}
                     >
-                        Découvrez mon parcours et mes compétences
+                        De 42Québec au Collège Maisonneuve : mon parcours de développeuse
                     </Typography>
                 </Container>
             </HeaderSection>
@@ -134,9 +128,14 @@ export default function APropos()
                             Qui suis-je ?
                         </Typography>
                         <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-                            Développeur passionné par la création d&apos;applications web modernes et innovantes.
+                            Après 10 ans d'ébénisterie, une blessure au dos en fin 2021 m'a poussée vers une
+                            réorientation de carrière. Cette transition m'a menée vers l'école 42Québec pour apprendre
+                            la programmation système en C/C++, puis vers le Collège Maisonneuve pour me spécialiser en
+                            développement web full stack. Aujourd'hui, je combine ma rigueur artisanale avec ma passion
+                            pour le code.
                         </Typography>
                         <Box>
+                            <SkillTag>C/C++ & C#</SkillTag>
                             <SkillTag>React</SkillTag>
                             <SkillTag>Next.js</SkillTag>
                             <SkillTag>TypeScript</SkillTag>
@@ -150,9 +149,12 @@ export default function APropos()
                             Formation
                         </Typography>
                         <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-                            Formation en développement web et technologies modernes.
+                            <strong>42Québec</strong> : 1½ an de programmation système en C/C++
+                            <br />
+                            <strong>Collège Maisonneuve</strong> : AEC Développement Full Stack Web
                         </Typography>
                         <Box>
+                            <SkillTag>Programmation Système</SkillTag>
                             <SkillTag>Développement Web</SkillTag>
                             <SkillTag>Architecture Logicielle</SkillTag>
                             <SkillTag>Bases de Données</SkillTag>
@@ -165,12 +167,19 @@ export default function APropos()
                             Expérience
                         </Typography>
                         <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-                            Aucune années d&apos;expérience dans le développement d&apos;applications.
+                            Nombreux projets personnels en GameDev (Unity & Godot en C#), applications WPF et MAUI,
+                            sites web en React et Next.js, ainsi qu'une connaissance fonctionnelle en SQL. Une
+                            expérience diversifiée allant du jeu vidéo aux applications desktop et web.
                         </Typography>
                         <Box>
-                            <SkillTag>Full Stack</SkillTag>
-                            <SkillTag>API REST</SkillTag>
-                            <SkillTag>Patate OS</SkillTag>
+                            <SkillTag>Unity</SkillTag>
+                            <SkillTag>Godot</SkillTag>
+                            <SkillTag>C#</SkillTag>
+                            <SkillTag>WPF</SkillTag>
+                            <SkillTag>MAUI</SkillTag>
+                            <SkillTag>React</SkillTag>
+                            <SkillTag>Next.js</SkillTag>
+                            <SkillTag>SQL</SkillTag>
                         </Box>
                     </AboutCard>
 
@@ -180,10 +189,12 @@ export default function APropos()
                             Approche
                         </Typography>
                         <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-                            Code propre, architecture solide et expérience utilisateur optimale.
+                            Approche rigoureuse héritée de 42, code propre et architecture solide pour une expérience
+                            utilisateur optimale avec application des design patterns et injection de dépendances. De l'allocation de mémoire dynamique en C à la gestion des threads, tout est pensé pour une performance optimale.
                         </Typography>
                         <Box>
                             <SkillTag>Clean Code</SkillTag>
+                            <SkillTag>Rigueur 42</SkillTag>
                             <SkillTag>UX/UI</SkillTag>
                             <SkillTag>Performance</SkillTag>
                         </Box>
@@ -196,8 +207,8 @@ export default function APropos()
                         Prêt à collaborer sur votre prochain projet ?
                     </Typography>
                     <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
-                        N&apos;hésitez pas à me contacter pour discuter de vos idées et voir comment nous pouvons
-                        travailler ensemble.
+                        Forte de mon parcours unique combinant programmation système et développement web, je suis prête
+                        à relever de nouveaux défis. Contactez-moi pour discuter de vos projets !
                     </Typography>
                 </Box>
             </Container>

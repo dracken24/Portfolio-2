@@ -66,7 +66,7 @@ export async function middleware(request: NextRequest)
 	try
 	{
 		// Vérifier le token JWT en utilisant l'API Web Crypto
-		const payload = await verifyJWT(token, process.env.JWT_SECRET || 'your-secret-key');
+		const payload = await verifyJWT(token, process.env.JWT_SECRET || 'B0a9N8a7N6a5B4o3M2b');
 		
 		if (!payload)
 		{
