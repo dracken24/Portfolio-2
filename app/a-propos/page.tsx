@@ -136,6 +136,7 @@ export default function APropos() {
                         </Typography>
                         <Box>
                             <SkillTag>C/C++ & C#</SkillTag>
+                            <SkillTag>Game Engines</SkillTag>
                             <SkillTag>React</SkillTag>
                             <SkillTag>Next.js</SkillTag>
                             <SkillTag>TypeScript</SkillTag>

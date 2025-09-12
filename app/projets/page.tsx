@@ -265,11 +265,11 @@ export default function Projets() {
             trading: '📊 Trading',
             autre: '🔧 Autre',
             // Ajoutez d'autres mappings si nécessaire
-            'Game Development': '🎮 Game Development',
-            'Web Development': '🌐 Web Development',
-            'Desktop Application': '💻 Applications Bureau',
-            'Mobile App': '📱 Mobile',
-            'Trading': '📊 Trading',
+            // 'Game Development': '🎮 Game Development',
+            // 'Web Development': '🌐 Web Development',
+            // 'Desktop Application': '💻 Applications Bureau',
+            // 'Mobile App': '📱 Mobile',
+            // 'Trading': '📊 Trading',
             Other: '🔧 Autre'
         };
         return categoryMap[category] || category;

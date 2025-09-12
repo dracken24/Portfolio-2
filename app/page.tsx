@@ -54,7 +54,8 @@ const FeatureCard = styled(Box)(({ theme }) => ({
     }
 }));
 
-export default function Home() {
+export default function Home()
+{
     const router = useRouter();
 
     const handleCardClick = (path: string) => {
@@ -99,7 +100,7 @@ export default function Home() {
                             mx: 'auto'
                         }}
                     >
-                        Système, GameDev & Web : Trois mondes, une passion
+                        Applications, GameDev & Web : Trois mondes, une passion
                     </Typography>
                 </Container>
             </HeaderSection>
