@@ -260,14 +260,16 @@ export default function Projets() {
             game: '🎮 Game Development',
             web: '🌐 Web Development',
             bureau: '💻 Applications Bureau',
-            burreau: '💻 Applications Bureau', // Correction pour la faute de frappe
+            // burreau: '💻 Applications Bureau', // Correction pour la faute de frappe
             mobile: '📱 Mobile',
+            trading: '📊 Trading',
             autre: '🔧 Autre',
             // Ajoutez d'autres mappings si nécessaire
             'Game Development': '🎮 Game Development',
             'Web Development': '🌐 Web Development',
             'Desktop Application': '💻 Applications Bureau',
             'Mobile App': '📱 Mobile',
+            'Trading': '📊 Trading',
             Other: '🔧 Autre'
         };
         return categoryMap[category] || category;
