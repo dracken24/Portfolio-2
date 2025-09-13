@@ -154,7 +154,7 @@ export default function APropos() {
                         <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
                             <strong>42Québec</strong> : 1½ an de programmation backend style core system en C/C++
                             <br />
-                            <strong>Collège Maisonneuve</strong> : AEC Développement Full Stack orienté Web
+                            <strong>Collège Maisonneuve</strong> : AEC Développement Full Stack orienté Applications (Bureau, Mobile) et Web
                         </Typography>
                         <Box>
                             <SkillTag>Programmation Système</SkillTag>
