@@ -1,6 +1,7 @@
 'use client';
 
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CloseIcon from '@mui/icons-material/Close';
 import CodeIcon from '@mui/icons-material/Code';
 import ErrorIcon from '@mui/icons-material/Error';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -17,7 +18,10 @@ import CardContent from '@mui/material/CardContent';
 import Chip from '@mui/material/Chip';
 import CircularProgress from '@mui/material/CircularProgress';
 import Container from '@mui/material/Container';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
 import FormControl from '@mui/material/FormControl';
+import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -253,6 +257,8 @@ export default function Projets() {
     const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
     const [isFiltering, setIsFiltering] = useState(false);
     const [availableCategories, setAvailableCategories] = useState<string[]>([]);
+    const [imageModalOpen, setImageModalOpen] = useState(false);
+    const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
 
     // Mapping des catégories de la base de données vers les noms d'affichage
     const getCategoryDisplayName = (category: string): string => {
@@ -263,7 +269,7 @@ export default function Projets() {
             // burreau: '💻 Applications Bureau', // Correction pour la faute de frappe
             mobile: '📱 Mobile',
             trading: '📊 Trading',
-            autre: '🔧 Autre',
+            autre: '🔧 Autre'
             // Ajoutez d'autres mappings si nécessaire
             // 'Game Development': '🎮 Game Development',
             // 'Web Development': '🌐 Web Development',
@@ -371,6 +377,17 @@ export default function Projets() {
     const clearFilters = () => {
         setSearchTerm('');
         setSelectedCategory('');
+    };
+
+    // Fonctions pour gérer le modal d'image
+    const handleImageClick = (imageUrl: string, projectName: string) => {
+        setSelectedImage({ src: getImageUrl(imageUrl), alt: projectName });
+        setImageModalOpen(true);
+    };
+
+    const handleCloseImageModal = () => {
+        setImageModalOpen(false);
+        setSelectedImage(null);
     };
 
     const getStatusColor = (status: string) => {
@@ -781,6 +798,7 @@ export default function Projets() {
                                             <img
                                                 src={getImageUrl(project.imageUrl)}
                                                 alt={project.name}
+                                                onClick={() => handleImageClick(project.imageUrl!, project.name)}
                                                 style={{
                                                     minWidth: '100px',
                                                     maxWidth: '400px',
@@ -790,7 +808,17 @@ export default function Projets() {
                                                     height: '100%',
                                                     objectFit: 'cover',
                                                     borderRadius: '12px',
-                                                    boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+                                                    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                                                    cursor: 'pointer',
+                                                    transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+                                                }}
+                                                onMouseEnter={e => {
+                                                    e.currentTarget.style.transform = 'scale(1.02)';
+                                                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.25)';
+                                                }}
+                                                onMouseLeave={e => {
+                                                    e.currentTarget.style.transform = 'scale(1)';
+                                                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
                                                 }}
                                             />
                                         </Box>
@@ -887,6 +915,67 @@ export default function Projets() {
                     </AnimatedBox>
                 )}
             </Container>
+
+            {/* Modal pour agrandir l'image */}
+            <Dialog
+                open={imageModalOpen}
+                onClose={handleCloseImageModal}
+                maxWidth="lg"
+                fullWidth
+                sx={{
+                    '& .MuiDialog-paper': {
+                        backgroundColor: 'transparent',
+                        boxShadow: 'none',
+                        maxHeight: '90vh'
+                    }
+                }}
+            >
+                <DialogContent
+                    sx={{
+                        position: 'relative',
+                        padding: 0,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        minHeight: '50vh'
+                    }}
+                >
+                    {/* Bouton de fermeture */}
+                    <IconButton
+                        onClick={handleCloseImageModal}
+                        sx={{
+                            position: 'absolute',
+                            top: 16,
+                            right: 16,
+                            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                            color: 'white',
+                            zIndex: 1,
+                            '&:hover': {
+                                backgroundColor: 'rgba(0, 0, 0, 0.7)'
+                            }
+                        }}
+                    >
+                        <CloseIcon />
+                    </IconButton>
+
+                    {/* Image agrandie */}
+                    {selectedImage && (
+                        <img
+                            src={selectedImage.src}
+                            alt={selectedImage.alt}
+                            style={{
+                                maxWidth: '100%',
+                                maxHeight: '90vh',
+                                width: 'auto',
+                                height: 'auto',
+                                borderRadius: '12px',
+                                boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+                                objectFit: 'contain'
+                            }}
+                        />
+                    )}
+                </DialogContent>
+            </Dialog>
         </Box>
     );
 }
