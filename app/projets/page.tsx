@@ -270,7 +270,7 @@ export default function Projets() {
             // 'Desktop Application': '💻 Applications Bureau',
             // 'Mobile App': '📱 Mobile',
             // 'Trading': '📊 Trading',
-            Other: '🔧 Autre'
+            // Other: '🔧 Autre'
         };
         return categoryMap[category] || category;
     };

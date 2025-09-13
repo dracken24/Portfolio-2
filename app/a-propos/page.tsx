@@ -128,6 +128,7 @@ export default function APropos() {
                             Qui suis-je ?
                         </Typography>
                         <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+                            Je m'appelle Nadia Desjardins et je suis une developpeuse full stack de la région de Québec.
                             Après 10 ans d'ébénisterie, une blessure au dos en fin 2021 m'a poussée vers une
                             réorientation de carrière. Cette transition m'a menée vers l'école 42Québec pour apprendre
                             la programmation système en C/C++, puis vers le Collège Maisonneuve pour me spécialiser en

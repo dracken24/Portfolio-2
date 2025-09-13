@@ -58,7 +58,8 @@ export default function Home()
 {
     const router = useRouter();
 
-    const handleCardClick = (path: string) => {
+    const handleCardClick = (path: string) =>
+    {
         router.push(path);
     };
 
