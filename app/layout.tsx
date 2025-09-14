@@ -4,8 +4,8 @@ import Footer from './components/Footer';
 
 export const metadata: Metadata =
 {
-    title: 'Laboratoire 2 - Services Web',
-    description: 'Application de gestion de projects avec services REST'
+    title: 'Portfolio Full Stack',
+    description: 'Nadia Desjardins - Développeuse Full Stack'
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode })
