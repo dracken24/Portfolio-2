@@ -1,12 +1,8 @@
-# Laboratoire 2 - Services Web REST
+# Portfolio
 
-****Portfolio Web - Next.js avec Material-UI****
+****Portfolio FullStack - Next.js avec Material-UI****
 
-Portfolio web moderne développé avec Next.js 14, Material-UI, TypeScript et Prisma.
-
-- Nadia DESJARDINS
-- Jean-François LEFEBVRE,
-- Natacha MEYER
+Portfolio FullStack moderne développé avec Next.js 14, Material-UI, TypeScript et Prisma.
 
 [Lien sur Vercel](https://portfolio-2-khaki-chi.vercel.app/)
 

@@ -83,7 +83,6 @@ export async function middleware(request: NextRequest)
 
 		// Token valide, continuer
 		return NextResponse.next();
-		
 	}
 	catch (error)
 	{
