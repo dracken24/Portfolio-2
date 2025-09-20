@@ -1,7 +1,7 @@
 # Portfolio FullStack - Documentation
 
 Projet FullStack de portfolio de projets avec authentification admin deployé sur Vercel.
-![Portfolio FullStack](https://portfolio-2-khaki-chi.vercel.app/)
+[Portfolio FullStack](https://portfolio-2-khaki-chi.vercel.app/)
 
 ## 1. Installation & Configuration
 
