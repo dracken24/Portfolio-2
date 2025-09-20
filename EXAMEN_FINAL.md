@@ -23,7 +23,8 @@
 
 ## Points de sécurité implémentés
 
-**Middleware Next.js** : Protection côté serveur des routes `/admin/*`
-**Cookies sécurisés** : Token stocké dans un cookie httpOnly
-**Vérification JWT** : Validation du token et du rôle admin
-**Redirection automatique** : Redirection vers l'accueil si non authentifié
+1. **Middleware Next.js** : Protection côté serveur des routes `/admin/*`
+2. **Cookies sécurisés** : Token stocké dans un cookie httpOnly
+3. **Vérification JWT** : Validation du token et du rôle admin
+4. **Redirection automatique** : Redirection vers l'accueil si non authentifié
+
