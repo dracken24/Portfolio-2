@@ -21,13 +21,27 @@ npx prisma generate
 1. Créer fichier `.env` :
 ```env
 DATABASE_URL="postgresql://..."
-JWT_SECRET="votre_secret_jwt_ici"
+JWT_SECRET="B0a9N8a7N6a5B4o3M2b"
 ```
 
 2. Initialiser la DB :
 ```bash
 npx prisma db push
 npx ts-node scripts/createAdmin.js
+```
+
+### Déploiement Vercel
+1. **Variables d'environnement** dans Vercel :
+   - `DATABASE_URL` : Votre string de connexion Neon
+   - `JWT_SECRET` : `B0a9N8a7N6a5B4o3M2b`
+
+2. **Ou via vercel.json** (déjà configuré) :
+```json
+{
+  "env": {
+    "JWT_SECRET": "B0a9N8a7N6a5B4o3M2b"
+  }
+}
 ```
 
 ### Exécution
