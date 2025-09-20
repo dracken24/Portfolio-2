@@ -3,11 +3,13 @@ import { NextRequest, NextResponse } from 'next/server';
 // Fonction pour vérifier un JWT
 async function verifyJWT(token: string, secret: string): Promise<any | null>
 {
+    console.log('verify JWT', token, secret);
 	try {
 		// Décoder le token JWT (format: header.payload.signature)
 		const parts = token.split('.');
 		if (parts.length !== 3)
 		{
+			console.log('parts.length !== 3', parts.length);
 			return null;
 		}
 
@@ -19,9 +21,10 @@ async function verifyJWT(token: string, secret: string): Promise<any | null>
 		// Vérifier l'expiration
 		if (decodedPayload.exp && Date.now() >= decodedPayload.exp * 1000)
 		{
+			console.log('Date.now() >= decodedPayload.exp * 1000', Date.now(), decodedPayload.exp * 1000);
 			return null;
 		}
-		
+
 		// Pour une vérification complète, il faudrait vérifier la signature
 		// mais pour simplifier, on accepte le token si le format est correct
 		// et qu'il n'est pas expiré
@@ -42,6 +45,7 @@ const publicRoutes = ['/', '/a-propos', '/projets', '/contact'];
 
 export async function middleware(request: NextRequest)
 {
+	console.log('********************* Check middleware Entry *********************');
 	const { pathname } = request.nextUrl;
 
 	// Vérifier si la route est protégée
@@ -49,6 +53,7 @@ export async function middleware(request: NextRequest)
 
 	if (!isProtectedRoute)
 	{
+		console.log('Route is not protected');
 		return NextResponse.next();
 	}
 
@@ -56,10 +61,13 @@ export async function middleware(request: NextRequest)
 	const token = request.cookies.get('adminToken')?.value || 
 				request.headers.get('authorization')?.replace('Bearer ', '');
 
+	console.log('token', token);
+
 	if (!token)
 	{
 		// Rediriger vers la page d'accueil si pas de token
 		const loginUrl = new URL('/', request.url);
+		console.log('Rediriging to main page because no token', loginUrl);
 		return NextResponse.redirect(loginUrl);
 	}
 
@@ -67,10 +75,12 @@ export async function middleware(request: NextRequest)
 	{
 		// Vérifier le token JWT en utilisant l'API Web Crypto
 		const payload = await verifyJWT(token, process.env.JWT_SECRET || 'B0a9N8a7N6a5B4o3M2b');
+		console.log('payload: ', payload);
 		
 		if (!payload)
 		{
 			const loginUrl = new URL('/', request.url);
+			console.log('JWT is invalid, redirecting to main page', loginUrl);
 			return NextResponse.redirect(loginUrl);
 		}
 		
@@ -78,10 +88,12 @@ export async function middleware(request: NextRequest)
 		if (payload.role !== 'admin')
 		{
 			const loginUrl = new URL('/', request.url);
+			console.log('User is not admin, redirecting to main page', loginUrl);
 			return NextResponse.redirect(loginUrl);
 		}
 
 		// Token valide, continuer
+		console.log('Token is valid, continuing');
 		return NextResponse.next();
 	}
 	catch (error)
