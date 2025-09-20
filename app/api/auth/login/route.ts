@@ -5,60 +5,58 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
-export async function POST(request: NextRequest)
-{
-    try
-	{
+export async function POST(request: NextRequest) {
+    try {
         const { email, password } = await request.json();
 
         // Validation des champs
-        if (!email || !password)
-		{
+        if (!email || !password) {
             return NextResponse.json({ message: 'Email et mot de passe requis' }, { status: 400 });
         }
 
         // Recherche de l'utilisateur
-        const user = await prisma.user.findUnique(
-		{
+        const user = await prisma.user.findUnique({
             where: { email: email.toLowerCase() }
         });
 
-        if (!user)
-		{
+        if (!user) {
             return NextResponse.json(
-				{
-					message: 'Email ou mot de passe incorrect'
-				},
-				{
-					status: 401
-				}
-			);
+                {
+                    message: 'Email ou mot de passe incorrect'
+                },
+                {
+                    status: 401
+                }
+            );
         }
 
         // Vérification du mot de passe
         const isValidPassword = await bcrypt.compare(password, user.password);
 
-        if (!isValidPassword)
-		{
+        if (!isValidPassword) {
             return NextResponse.json({ message: 'Email ou mot de passe incorrect' }, { status: 401 });
         }
 
         // Génération du token JWT
+        const jwtSecret = process.env.JWT_SECRET;
+        if (!jwtSecret) {
+            return NextResponse.json({ message: 'Configuration serveur invalide' }, { status: 500 });
+        }
+
         const token = jwt.sign(
             {
                 userId: user.id,
                 email: user.email,
                 role: user.role
             },
-            process.env.JWT_SECRET || 'B0a9N8a7N6a5B4o3M2b',
+            jwtSecret,
             {
-				expiresIn: '24h'
-			}
+                expiresIn: '24h'
+            }
         );
 
         // Retour des informations utilisateur (sans le mot de passe)
-        const userResponse =
-		{
+        const userResponse = {
             id: user.id,
             email: user.email,
             name: user.name,
@@ -66,16 +64,14 @@ export async function POST(request: NextRequest)
         };
 
         // Créer la réponse avec le token dans un cookie sécurisé
-        const response = NextResponse.json(
-		{
+        const response = NextResponse.json({
             message: 'Connexion réussie',
             token,
             user: userResponse
         });
 
         // Définir le cookie sécurisé
-        response.cookies.set('adminToken', token,
-		{
+        response.cookies.set('adminToken', token, {
             httpOnly: true, // Empêche l'accès JavaScript côté client
             secure: process.env.NODE_ENV === 'production', // HTTPS en production
             sameSite: 'strict', // Protection CSRF
@@ -84,17 +80,15 @@ export async function POST(request: NextRequest)
         });
 
         return response;
-    }
-	catch (error)
-	{
+    } catch (error) {
         console.error('Erreur de connexion:', error);
         return NextResponse.json(
-			{
-				message: 'Erreur interne du serveur'
-			},
-			{
-				status: 500
-			}
-		);
+            {
+                message: 'Erreur interne du serveur'
+            },
+            {
+                status: 500
+            }
+        );
     }
 }
