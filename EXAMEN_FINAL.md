@@ -34,7 +34,12 @@ npm run dev  # http://localhost:3000
 
 ### Tests de Sécurité
 1. **Accès direct** : `http://localhost:3000/admin/dashboard` → Redirection
+   ![Test d'accès direct](./public/imgs/Examen_Final/DirectRoad.png)
+
 2. **Connexion** : Login admin → Dashboard accessible
+   ![Test de connexion](./public/imgs/Examen_Final/Login.png)
+   ![Connexion réussie](./public/imgs/Examen_Final/Success.png)
+
 3. **API** : Utiliser `tests/api.http`
 
 ## 2. API Endpoints
@@ -53,7 +58,7 @@ JWT Token via cookie `adminToken` ou header `Authorization: Bearer <token>`
 ```bash
 curl -X POST http://localhost:3000/api/auth/login \
   -H "Content-Type: application/json" \
-  -d '{"email":"admin@portfolio.com","password":"admin123"}'
+  -d '{"email":"admin@********, portfolio********.com","password":"8888888888"}'
 ```
 
 #### GET /api/projects
