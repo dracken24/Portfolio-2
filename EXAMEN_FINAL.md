@@ -6,7 +6,7 @@
 1. Essayez d'accéder directement à `http://localhost:3000/admin/dashboard`
 2. **Résultat attendu** : Redirection automatique vers la page d'accueil
 
-![Test d'accès direct sans authentification](./public/imgs/Examen_Final/Screenshot%202025-09-20%101702.png)
+![Test d'accès direct sans authentification](./public/imgs/Examen_Final/DirectRoad.png)
 
 
 ### 2. Test de connexion normale
@@ -15,9 +15,9 @@
 3. Connectez-vous avec des identifiants valides
 4. **Résultat attendu** : Redirection vers le dashboard admin
 
-![Test de connexion normale 1](./public/imgs/Examen_Final/Screenshot%202025-09-20%101836.png)
+![Test de connexion normale 1](./public/imgs/Examen_Final/Login.png)
 
-![Test de connexion normale 1](./public/imgs/Examen_Final/Screenshot%202025-09-20%101927.png)
+![Test de connexion normale 1](./public/imgs/Examen_Final/Success.png)
 
 
 
