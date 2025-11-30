@@ -128,13 +128,15 @@ export default function APropos() {
                             Qui suis-je ?
                         </Typography>
                         <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-                            Je m'appelle Nadia Desjardins et je suis une developpeuse full stack de la région de Québec.
-                            Après 10 ans d'ébénisterie, une blessure au dos en fin 2021 m'a poussée vers une
-                            réorientation de carrière. Cette transition m'a menée vers l'école 42Québec pour apprendre
-                            la programmation système en C/C++, puis vers le Collège Maisonneuve pour me spécialiser en
-                            développement web full stack. Aujourd'hui, après pres de 4 ans de formation et d'expérience, je combine ma rigueur artisanale avec ma passion
-                            pour le code.
+                            Formée à l'école 42 en programmation système (C/C++) et un cours collègiale en développement full stack (Web, mobile et bureau), j’ai acquis une solide maîtrise des langages C#, TypeScript, et SQL, ainsi que des frameworks React, Next.js, WPF et MAUI.
                         </Typography>
+                        <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+                            J’ai développé plusieurs projets personnels — allant d’applications web dynamiques à des outils desktop — où j’ai mis en œuvre de bonnes pratiques comme le Clean Code, les design patterns et l’optimisation des performances.
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+                            Autonome, curieuse et motivée, j’aime relever des défis techniques et trouver des solutions élégantes à des problèmes complexes. Mon objectif est de contribuer activement à la conception d’applications fiables, intuitives et maintenables.
+                        </Typography>
+
                         <Box>
                             <SkillTag>C/C++ & C#</SkillTag>
                             <SkillTag>Game Engines</SkillTag>
